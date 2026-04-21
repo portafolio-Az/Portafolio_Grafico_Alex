@@ -2,16 +2,17 @@
    SCRIPT.JS — Roberto Azcorra Portfolio
    ══════════════════════════════════════════════ */
 
-/* ── PRELOADER ──────────────────────────────── */
+/* ── PRELOADER — duración: 0.5 s ───────────── */
 window.addEventListener('load', () => {
+  // 500 ms en lugar de 2000 ms
   setTimeout(() => {
     const pre = document.getElementById('preloader');
     if (pre) pre.classList.add('hidden');
-    // Animar elementos del hero después del preloader
+    // Animar hero inmediatamente después
     document.querySelectorAll('.hero .reveal-up, .hero .reveal-right').forEach((el, i) => {
-      setTimeout(() => el.classList.add('visible'), 100 + i * 130);
+      setTimeout(() => el.classList.add('visible'), 80 + i * 110);
     });
-  }, 2000);
+  }, 500);
 });
 
 /* ══════════════════════════════════════════════
@@ -21,12 +22,12 @@ const navbar    = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
 const navMenu   = document.getElementById('navMenu');
 
-// Crear backdrop para cerrar menú al hacer clic fuera
+// Backdrop para cerrar menú al tocar fuera
 const navBackdrop = document.createElement('div');
 navBackdrop.id = 'nav-backdrop';
 document.body.appendChild(navBackdrop);
 
-/* Scroll: cambiar navbar entre blanco y oscuro */
+/* Cambiar fondo del navbar al hacer scroll */
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
   highlightActiveLink();
@@ -35,15 +36,20 @@ window.addEventListener('scroll', () => {
 
 /* Marcar link activo según sección visible */
 function highlightActiveLink() {
-  const scrollY = window.scrollY + parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h') || '68') + 20;
+  const navH  = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h') || '68');
+  const scrollY = window.scrollY + navH + 20;
   document.querySelectorAll('section[id]').forEach(sec => {
     const link = document.querySelector(`.nav-link[href="#${sec.id}"]`);
-    if (link) link.classList.toggle('active', scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight);
+    if (link) {
+      link.classList.toggle('active',
+        scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight
+      );
+    }
   });
 }
 
-/* Hamburger — abrir/cerrar menú móvil */
-hamburger.addEventListener('click', (e) => {
+/* Hamburger */
+hamburger.addEventListener('click', e => {
   e.stopPropagation();
   toggleMobileMenu();
 });
@@ -62,10 +68,10 @@ function closeMobileMenu() {
   document.body.style.overflow = '';
 }
 
-/* Cerrar al hacer clic en el backdrop */
+// Cerrar con backdrop
 navBackdrop.addEventListener('click', closeMobileMenu);
 
-/* Cerrar al hacer clic en cualquier enlace del menú */
+// Cerrar al hacer clic en un enlace
 navMenu.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', closeMobileMenu);
 });
@@ -85,7 +91,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 /* ══════════════════════════════════════════════
-   TYPEWRITER
+   TYPEWRITER — Arranca a los 700 ms
    ══════════════════════════════════════════════ */
 const phrases = [
   'Creatividad, tecnología y seguridad para soluciones digitales completas.',
@@ -104,7 +110,8 @@ function typeLoop() {
   else if (deleting && charIdx === 0) { deleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; delay = 350; }
   setTimeout(typeLoop, delay);
 }
-setTimeout(typeLoop, 2300);
+// Arranca pronto, ya que el preloader solo dura 0.5 s
+setTimeout(typeLoop, 700);
 
 /* ══════════════════════════════════════════════
    SCROLL REVEAL
@@ -115,15 +122,17 @@ const revealObs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     entry.target.classList.add('visible');
-    if (!skillsAnimated && (entry.target.classList.contains('skills-col') || entry.target.closest('.skills-section'))) {
+    if (!skillsAnimated &&
+        (entry.target.classList.contains('skills-col') ||
+         entry.target.closest('.skills-section'))) {
       skillsAnimated = true;
       animateSkillBars();
     }
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-// Observar todos los elementos de reveal EXCEPTO los del hero (esos se manejan por el preloader)
-document.querySelectorAll('.reveal-up:not(.hero *), .reveal-left, .reveal-right').forEach(el => revealObs.observe(el));
+document.querySelectorAll('.reveal-up:not(.hero *), .reveal-left, .reveal-right')
+  .forEach(el => revealObs.observe(el));
 
 /* Barras de habilidades */
 function animateSkillBars() {
@@ -134,12 +143,11 @@ function animateSkillBars() {
 }
 
 /* ══════════════════════════════════════════════
-   PORTAFOLIO — FILTRO CON TRANSICIÓN SUAVE
+   PORTAFOLIO — FILTRO CON TRANSICIÓN
    ══════════════════════════════════════════════ */
 const filterBtns = document.querySelectorAll('.filter-btn');
 const pfItems    = Array.from(document.querySelectorAll('.pf-item'));
 
-// Inicializar: todos visibles
 pfItems.forEach(item => item.style.display = '');
 let isFiltering = false;
 
@@ -148,7 +156,6 @@ filterBtns.forEach(btn => {
     if (isFiltering) return;
     const filter = btn.dataset.filter;
 
-    // Actualizar botón activo
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
@@ -157,61 +164,54 @@ filterBtns.forEach(btn => {
 
     isFiltering = true;
 
-    // FASE 1: marcar ítems a ocultar → CSS los desvanece
+    // Fase 1: salida
     toHide.forEach(item => item.classList.add('pf-exiting'));
 
-    // FASE 2: después de la transición, ocultarlos y mostrar los nuevos
     setTimeout(() => {
-      // Ocultar los que salen
       toHide.forEach(item => {
         item.classList.remove('pf-exiting');
         item.classList.add('pf-hidden');
         item.style.pointerEvents = 'none';
       });
 
-      // Preparar los que entran: estado inicial (invisible + desplazado)
       toShow.forEach(item => {
         item.classList.remove('pf-hidden');
         item.style.pointerEvents = 'auto';
-        // Si no era visible, aplicar estado "entering"
         if (!item.classList.contains('pf-entering')) {
           item.classList.add('pf-entering');
         }
       });
 
-      // Forzar reflow para que el estado inicial se pinte antes de la transición
+      // Reflow forzado
       void document.getElementById('portfolioGrid').offsetHeight;
 
-      // FASE 3: animar entrada con stagger
+      // Fase 3: entrada con stagger
       toShow.forEach((item, i) => {
-        setTimeout(() => {
-          item.classList.remove('pf-entering');
-        }, i * 55);
+        setTimeout(() => item.classList.remove('pf-entering'), i * 55);
       });
 
-      // Liberar el flag al terminar
       setTimeout(() => { isFiltering = false; }, toShow.length * 55 + 400);
 
-    }, 380); // Duración de la fase de salida
+    }, 380);
   });
 });
 
 /* ══════════════════════════════════════════════
    PORTAFOLIO — MODAL + GALERÍA
    ══════════════════════════════════════════════ */
-const modal         = document.getElementById('portfolioModal');
-const modalClose    = document.getElementById('modalClose');
-const modalTitle    = document.getElementById('modalTitle');
-const modalCatTag   = document.getElementById('modalCatTag');
-const modalDesc     = document.getElementById('modalDesc');
-const galleryMain   = document.getElementById('galleryMain');
-const galleryThumbs = document.getElementById('galleryThumbs');
-const galleryCounter= document.getElementById('galleryCounter');
-const galleryPrev   = document.getElementById('galleryPrev');
-const galleryNext   = document.getElementById('galleryNext');
+const modal          = document.getElementById('portfolioModal');
+const modalClose     = document.getElementById('modalClose');
+const modalTitle     = document.getElementById('modalTitle');
+const modalCatTag    = document.getElementById('modalCatTag');
+const modalDesc      = document.getElementById('modalDesc');
+const galleryMain    = document.getElementById('galleryMain');
+const galleryThumbs  = document.getElementById('galleryThumbs');
+const galleryCounter = document.getElementById('galleryCounter');
+const galleryPrev    = document.getElementById('galleryPrev');
+const galleryNext    = document.getElementById('galleryNext');
 
-let currentImages  = [];
-let currentImgIdx  = 0;
+let currentImages = [];
+let currentImgIdx = 0;
 
 function openModal(item) {
   const title = item.dataset.title || '';
@@ -246,10 +246,16 @@ function renderGallery() {
   });
 }
 
-galleryPrev.addEventListener('click', () => { currentImgIdx = (currentImgIdx - 1 + currentImages.length) % currentImages.length; renderGallery(); });
-galleryNext.addEventListener('click', () => { currentImgIdx = (currentImgIdx + 1) % currentImages.length; renderGallery(); });
+galleryPrev.addEventListener('click', () => {
+  currentImgIdx = (currentImgIdx - 1 + currentImages.length) % currentImages.length;
+  renderGallery();
+});
+galleryNext.addEventListener('click', () => {
+  currentImgIdx = (currentImgIdx + 1) % currentImages.length;
+  renderGallery();
+});
 
-// Swipe táctil en galería
+// Swipe táctil
 let touchStartX = 0;
 galleryMain.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
 galleryMain.addEventListener('touchend', e => {
@@ -262,7 +268,7 @@ galleryMain.addEventListener('touchend', e => {
   }
 });
 
-// Teclado en galería
+// Teclado
 document.addEventListener('keydown', e => {
   if (!modal.classList.contains('open')) return;
   if (e.key === 'Escape')     closeModal();
@@ -270,7 +276,7 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') { currentImgIdx = (currentImgIdx + 1) % currentImages.length; renderGallery(); }
 });
 
-// Abrir modal desde cada ítem
+// Abrir modal
 pfItems.forEach(item => {
   const openBtn = item.querySelector('.pf-open');
   if (openBtn) openBtn.addEventListener('click', e => { e.stopPropagation(); openModal(item); });
@@ -330,7 +336,7 @@ function toggleBackToTop() { backToTopBtn?.classList.toggle('visible', window.sc
 backToTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 /* ══════════════════════════════════════════════
-   PORTAFOLIO — ANIMACIÓN DE ENTRADA EN SCROLL
+   PORTAFOLIO — ENTRADA EN SCROLL
    ══════════════════════════════════════════════ */
 const pfScrollObs = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
@@ -345,31 +351,28 @@ const pfScrollObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.08 });
 
-pfItems.forEach((item, i) => {
-  // Estado inicial para animación de entrada
-  item.style.opacity    = '0';
-  item.style.transform  = 'translateY(28px) scale(0.97)';
+pfItems.forEach(item => {
+  item.style.opacity   = '0';
+  item.style.transform = 'translateY(28px) scale(0.97)';
   item.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.35s ease';
   pfScrollObs.observe(item);
 });
 
 /* ══════════════════════════════════════════════
-   FOTOS SOBRE MÍ — TILT 3D AL HOVER
+   FOTOS SOBRE MÍ — TILT 3D
    ══════════════════════════════════════════════ */
 document.querySelectorAll('.aph-card').forEach(card => {
   card.addEventListener('mousemove', e => {
-    const r   = card.getBoundingClientRect();
-    const rx  = ((e.clientY - r.top  - r.height / 2) / r.height) * 12;
-    const ry  = -((e.clientX - r.left - r.width  / 2) / r.width)  * 12;
+    const r  = card.getBoundingClientRect();
+    const rx = ((e.clientY - r.top  - r.height / 2) / r.height) * 12;
+    const ry = -((e.clientX - r.left - r.width  / 2) / r.width)  * 12;
     card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateY(-10px) scale(1.04)`;
   });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
 
 /* ══════════════════════════════════════════════
-   HERO — STATS EN MÓVIL: REORDENAR BAJO EL CÍRCULO
+   HERO — STATS EN MÓVIL (mover bajo el círculo)
    ══════════════════════════════════════════════ */
 function setupHeroStats() {
   const heroImage = document.querySelector('.hero-image');
@@ -388,8 +391,14 @@ function setupHeroStats() {
     if (s1 && !statsRow.contains(s1)) statsRow.appendChild(s1);
     if (s2 && !statsRow.contains(s2)) statsRow.appendChild(s2);
   } else {
-    if (s1 && heroImage && !heroImage.contains(s1)) heroImage.appendChild(s1);
-    if (s2 && heroImage && !heroImage.contains(s2)) heroImage.appendChild(s2);
+    // Desktop: devolver los stats al hero-image
+    const ring = document.querySelector('.hero-ring-outer');
+    if (s1 && ring && !heroImage.querySelector('.hero-stat-1')) {
+      heroImage.appendChild(s1);
+    }
+    if (s2 && ring && !heroImage.querySelector('.hero-stat-2')) {
+      heroImage.appendChild(s2);
+    }
     if (statsRow) statsRow.remove();
   }
 }
