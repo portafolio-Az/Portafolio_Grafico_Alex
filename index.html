@@ -11,15 +11,16 @@
 </head>
 <body>
 
-  <!-- ─────────────── PRELOADER ─────────────── -->
+  <!-- PRELOADER (FONDO BLANCO) -->
   <div id="preloader">
     <div class="preloader-inner">
       <span class="preloader-logo">R.A.</span>
+      <p class="preloader-tagline">Diseño · Tecnología · Creatividad</p>
       <div class="preloader-bar"><div class="preloader-progress"></div></div>
     </div>
   </div>
 
-  <!-- ─────────────── NAVBAR ─────────────── -->
+  <!-- NAVBAR -->
   <header id="navbar">
     <div class="nav-container">
       <a href="#inicio" class="nav-logo">R.A.</a>
@@ -28,11 +29,32 @@
         <a href="#sobre-mi" class="nav-link">Sobre mí</a>
         <a href="#portafolio" class="nav-link">Portafolio</a>
         <a href="#trayectoria" class="nav-link">Trayectoria</a>
-        <a href="#planes" class="nav-link">Planes y servicios</a>
         <a href="#contacto" class="nav-link">Contacto</a>
+        <a href="cv.pdf" download class="nav-link nav-cv">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="13" height="13"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+          Descargar CV
+        </a>
+        <!-- Redes sociales en menú móvil -->
+        <div class="nav-socials-mobile">
+          <a href="#" target="_blank" aria-label="Facebook" class="nsm-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" target="_blank" aria-label="Instagram" class="nsm-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" target="_blank" aria-label="Threads" class="nsm-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 12.03c-.12-5.22-3.43-7.84-7.67-7.84-4.41 0-7.67 2.96-7.67 8.06s3.19 7.75 7.67 7.75c2.94 0 5.25-1.06 6.47-2.93l-1.8-1.04c-.82 1.17-2.38 1.91-4.63 1.91-3.15 0-5.24-1.88-5.35-5.27h12.96c.01-.21.02-.43.02-.64zm-13-1.06c.21-2.97 1.98-4.72 5.29-4.72 2.88 0 4.83 1.47 5.18 4.72H6.59z"/></svg>
+          </a>
+          <a href="#" target="_blank" aria-label="GitHub" class="nsm-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+          </a>
+          <a href="#" target="_blank" aria-label="YouTube" class="nsm-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 7.19a2.76 2.76 0 00-1.94-1.96C17.88 4.75 12 4.75 12 4.75s-5.88 0-7.64.48A2.76 2.76 0 002.42 7.19 28.9 28.9 0 002 12a28.9 28.9 0 00.42 4.81 2.76 2.76 0 001.94 1.96C6.12 19.25 12 19.25 12 19.25s5.88 0 7.64-.48a2.76 2.76 0 001.94-1.95A28.9 28.9 0 0022 12a28.9 28.9 0 00-.42-4.81zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+          </a>
+        </div>
       </nav>
       <a href="tel:+525544705244" class="nav-phone">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
         +52 554 470 5244
       </a>
       <button class="hamburger" id="hamburger" aria-label="Menú">
@@ -41,9 +63,10 @@
     </div>
   </header>
 
-  <!-- ─────────────── HERO ─────────────── -->
+  <!-- HERO — FONDO BLANCO -->
   <section id="inicio" class="hero">
-    <div class="hero-bg-shape"></div>
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
     <div class="hero-content">
       <div class="hero-text">
         <p class="hero-greeting reveal-up">Hola, soy</p>
@@ -57,13 +80,18 @@
         </p>
         <div class="hero-cta reveal-up">
           <a href="#contacto" class="btn btn-primary">Trabajemos juntos</a>
-          <a href="#portafolio" class="btn btn-outline">Ver proyectos</a>
+          <a href="#portafolio" class="btn btn-outline-dark">Ver proyectos</a>
         </div>
       </div>
+
       <div class="hero-image reveal-right">
-        <div class="hero-photo-ring">
-          <div class="hero-photo-placeholder">
-            <div class="photo-initials">RA</div>
+        <div class="hero-ring-outer">
+          <div class="hero-photo-ring">
+            <!-- Para usar tu foto: reemplaza el div.hero-photo-placeholder con:
+                 <img src="tu-foto.jpg" alt="Roberto Azcorra"> -->
+            <div class="hero-photo-placeholder">
+              <span class="photo-initials">RA</span>
+            </div>
           </div>
         </div>
         <div class="hero-stat hero-stat-1">
@@ -76,56 +104,88 @@
         </div>
       </div>
     </div>
-    <a href="#sobre-mi" class="hero-scroll-btn" aria-label="Scroll">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    <a href="#sobre-mi" class="hero-scroll-btn" aria-label="Bajar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </a>
   </section>
 
-  <!-- ─────────────── SOBRE MÍ ─────────────── -->
+  <!-- SOBRE MÍ -->
   <section id="sobre-mi" class="section">
     <div class="container">
       <h2 class="section-title reveal-up">Sobre <span class="accent">mí</span></h2>
-      <div class="about-grid">
-        <div class="about-text reveal-left">
+
+      <!-- FOTOS DINÁMICAS: 3 fotos en collage -->
+      <div class="about-photos-row reveal-up">
+        <div class="aph-card aph-card-1">
+          <!-- <img src="foto1.jpg" alt="Roberto Azcorra"> -->
+          <div class="aph-placeholder"><span>📷</span><p>Agrega tu foto 1</p></div>
+          <div class="aph-label">Roberto Azcorra</div>
+        </div>
+        <div class="aph-card aph-card-2">
+          <div class="aph-placeholder"><span>🎨</span><p>Agrega tu foto 2</p></div>
+          <div class="aph-label">Diseñador Gráfico</div>
+        </div>
+        <div class="aph-card aph-card-3">
+          <div class="aph-placeholder"><span>💻</span><p>Agrega tu foto 3</p></div>
+          <div class="aph-label">Desarrollador Web</div>
+        </div>
+      </div>
+
+      <!-- BIO + CITA -->
+      <div class="about-bio-row">
+        <div class="about-bio-text reveal-left">
           <p>Soy un profesional de <strong>28 años</strong>, serio, organizado y con una actitud dinámica y alegre. Mi creatividad y elocuencia me permiten destacar en diversos desafíos, siempre motivado para aprender y trabajar en equipo.</p>
           <p><strong>Licenciado en Informática y Sistemas de Seguridad</strong> con sólida experiencia en diseño gráfico y conocimientos en desarrollo FrontEnd (HTML, CSS, JavaScript). Me caracterizo por la mejora continua y estar al día en tendencias tecnológicas y de diseño.</p>
-          <p>Con <strong>4 años de experiencia</strong> en atención al cliente y más de <strong>6 años como freelancer</strong> en diseño, he desarrollado habilidades de comunicación efectiva, trabajo en equipo y adaptación rápida.</p>
-          <blockquote class="about-quote">
-            <p>"Integro creatividad, tecnología y seguridad para que tu negocio crezca sin riesgos."</p>
-            <cite>— Roberto Azcorra</cite>
-          </blockquote>
+          <p>Con <strong>4 años de experiencia</strong> en atención al cliente y más de <strong>6 años como freelancer</strong> en diseño, he desarrollado habilidades de comunicación efectiva y adaptación rápida. Disfruto viajar y conocer nuevos lugares, ya que cada experiencia amplía mi perspectiva e inspira mi creatividad.</p>
         </div>
-        <div class="about-skills reveal-right">
-          <h3 class="skills-title">Habilidades técnicas</h3>
-          <div class="skills-group">
-            <p class="skills-group-label">Lenguajes &amp; Herramientas</p>
+        <blockquote class="about-quote reveal-right">
+          <div class="quote-mark">"</div>
+          <p>Integro creatividad, tecnología y seguridad para que tu negocio crezca sin riesgos.</p>
+          <cite>— Roberto Azcorra</cite>
+        </blockquote>
+      </div>
+
+      <!-- HABILIDADES COMPLETAS -->
+      <div class="skills-section">
+        <h3 class="skills-main-title reveal-up">Habilidades <span class="accent">técnicas</span></h3>
+        <div class="skills-columns">
+          <div class="skills-col reveal-left">
+            <p class="skills-group-label">Lenguajes &amp; Herramientas Web</p>
             <div class="skill-item"><span>HTML5</span><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div><span>95%</span></div>
             <div class="skill-item"><span>CSS3</span><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div><span>75%</span></div>
             <div class="skill-item"><span>JavaScript</span><div class="skill-bar"><div class="skill-fill" data-width="50"></div></div><span>50%</span></div>
+
+            <p class="skills-group-label" style="margin-top:1.75rem">Plataformas con IA</p>
+            <div class="skill-item"><span>ChatGPT / Gemini / Claude</span><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div><span>95%</span></div>
+            <div class="skill-item"><span>Perplexity / Qwen / Grok</span><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div><span>78%</span></div>
+            <div class="skill-item"><span>Firefly / Leonardo / Ideogram</span><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div><span>80%</span></div>
+            <div class="skill-item"><span>Canva IA</span><div class="skill-bar"><div class="skill-fill" data-width="70"></div></div><span>70%</span></div>
           </div>
-          <div class="skills-group">
+
+          <div class="skills-col reveal-right">
             <p class="skills-group-label">Diseño &amp; Ofimática</p>
             <div class="skill-item"><span>Illustrator</span><div class="skill-bar"><div class="skill-fill" data-width="100"></div></div><span>100%</span></div>
+            <div class="skill-item"><span>Affinity / Canva</span><div class="skill-bar"><div class="skill-fill" data-width="100"></div></div><span>100%</span></div>
             <div class="skill-item"><span>Photoshop</span><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div><span>95%</span></div>
             <div class="skill-item"><span>InDesign</span><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div><span>85%</span></div>
-            <div class="skill-item"><span>After Effects</span><div class="skill-bar"><div class="skill-fill" data-width="45"></div></div><span>45%</span></div>
+            <div class="skill-item"><span>Excel (Macros, VB)</span><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div><span>80%</span></div>
             <div class="skill-item"><span>Premiere Pro</span><div class="skill-bar"><div class="skill-fill" data-width="70"></div></div><span>70%</span></div>
-          </div>
-          <div class="skills-group">
-            <p class="skills-group-label">IA &amp; Plataformas</p>
-            <div class="skill-item"><span>ChatGPT / Claude / Gemini</span><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div><span>95%</span></div>
-            <div class="skill-item"><span>Firefly / Leonardo / Ideogram</span><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div><span>80%</span></div>
+            <div class="skill-item"><span>CorelDraw</span><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div><span>75%</span></div>
+            <div class="skill-item"><span>After Effects</span><div class="skill-bar"><div class="skill-fill" data-width="45"></div></div><span>45%</span></div>
+            <div class="skill-item"><span>Blender (3D)</span><div class="skill-bar"><div class="skill-fill" data-width="35"></div></div><span>35%</span></div>
+            <div class="skill-item"><span>Lightroom / Media Encoder</span><div class="skill-bar"><div class="skill-fill" data-width="35"></div></div><span>35%</span></div>
+            <div class="skill-item"><span>Dreamweaver / Access</span><div class="skill-bar"><div class="skill-fill" data-width="35"></div></div><span>35%</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─────────────── PORTAFOLIO ─────────────── -->
+  <!-- PORTAFOLIO -->
   <section id="portafolio" class="section section-dark">
     <div class="container">
       <h2 class="section-title reveal-up">Port<span class="accent">afolio</span></h2>
-      <p class="section-subtitle reveal-up">Una selección de proyectos que reflejan mi visión creativa y capacidad técnica</p>
+      <p class="section-subtitle reveal-up">Selección de proyectos que reflejan mi visión creativa y capacidad técnica</p>
 
       <div class="portfolio-filters reveal-up">
         <button class="filter-btn active" data-filter="all">Todos</button>
@@ -137,121 +197,173 @@
       </div>
 
       <div class="portfolio-grid" id="portfolioGrid">
-
-        <div class="portfolio-item" data-category="identidad" data-title="Identidad Corporativa Nexus" data-desc="Desarrollo completo de identidad visual para empresa tecnológica: logotipo, paleta de color, tipografía y manual de marca." data-color="#1a1a2e">
-          <div class="portfolio-thumb" style="background:linear-gradient(135deg,#1a1a2e,#16213e)">
-            <div class="portfolio-icon">✦</div>
+        <!-- Proyecto 1 – featured (2 cols) -->
+        <div class="pf-item pf-wide" data-category="identidad"
+          data-title="Identidad Corporativa Nexus"
+          data-cat="Identidad Visual"
+          data-desc="Desarrollo completo de identidad visual para empresa tecnológica: logotipo, paleta de color, tipografía y manual de marca."
+          data-images='["linear-gradient(135deg,#1a1a2e 0%,#16213e 100%)","linear-gradient(135deg,#0f3460 0%,#533483 100%)","linear-gradient(135deg,#e94560 0%,#533483 100%)","linear-gradient(135deg,#16213e 0%,#e94560 100%)","linear-gradient(135deg,#0f3460 0%,#1a1a2e 100%)"]'>
+          <div class="pf-thumb" style="background:linear-gradient(135deg,#1a1a2e,#533483)">
+            <div class="pf-glyph">✦</div>
+            <div class="pf-thumb-accent" style="background:linear-gradient(90deg,#e94560,#533483)"></div>
           </div>
-          <div class="portfolio-overlay">
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Identidad visual</span>
             <h3>Nexus Corp</h3>
-            <p>Identidad visual</p>
-            <button class="portfolio-open-btn" aria-label="Ver proyecto">+</button>
+            <p>Branding &amp; Manual de marca</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
           </div>
         </div>
 
-        <div class="portfolio-item" data-category="branding" data-title="Branding Café Origen" data-desc="Branding completo para cafetería artesanal: logotipo, empaque, señalética y material de punto de venta con estética warm y orgánica." data-color="#3d2c1e">
-          <div class="portfolio-thumb" style="background:linear-gradient(135deg,#3d2c1e,#6b4226)">
-            <div class="portfolio-icon">◆</div>
+        <!-- Proyecto 2 -->
+        <div class="pf-item" data-category="branding"
+          data-title="Branding Café Origen"
+          data-cat="Branding"
+          data-desc="Branding completo para cafetería artesanal: logotipo, empaque, señalética y material de punto de venta con estética warm y orgánica."
+          data-images='["linear-gradient(135deg,#3d2c1e,#6b4226)","linear-gradient(135deg,#6b4226,#a0522d)","linear-gradient(135deg,#a0522d,#cd853f)","linear-gradient(135deg,#3d2c1e,#8b6347)","linear-gradient(135deg,#5c3d2e,#c9952a)"]'>
+          <div class="pf-thumb" style="background:linear-gradient(135deg,#3d2c1e,#a0522d)">
+            <div class="pf-glyph">◆</div>
           </div>
-          <div class="portfolio-overlay">
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Branding</span>
             <h3>Café Origen</h3>
-            <p>Branding</p>
-            <button class="portfolio-open-btn" aria-label="Ver proyecto">+</button>
+            <p>Identidad &amp; Empaque</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
           </div>
         </div>
 
-        <div class="portfolio-item" data-category="social" data-title="Social Media Pack — FitLife" data-desc="Diseño de 30 plantillas para redes sociales (Instagram, Facebook, TikTok) con coherencia visual y alto engagement para marca fitness." data-color="#0d3b2e">
-          <div class="portfolio-thumb" style="background:linear-gradient(135deg,#0d3b2e,#1a6b4a)">
-            <div class="portfolio-icon">◉</div>
+        <!-- Proyecto 3 -->
+        <div class="pf-item" data-category="social"
+          data-title="Social Media — FitLife"
+          data-cat="Social Media"
+          data-desc="Pack de 30 plantillas para redes sociales (Instagram, Facebook, TikTok) con coherencia visual y alto engagement para marca fitness."
+          data-images='["linear-gradient(135deg,#0d3b2e,#1a6b4a)","linear-gradient(135deg,#1a6b4a,#2d9b6e)","linear-gradient(135deg,#2d9b6e,#c9952a)","linear-gradient(135deg,#0d3b2e,#2d5a40)","linear-gradient(135deg,#1a5c3e,#3db878)"]'>
+          <div class="pf-thumb" style="background:linear-gradient(135deg,#0d3b2e,#2d9b6e)">
+            <div class="pf-glyph">◉</div>
           </div>
-          <div class="portfolio-overlay">
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Social media</span>
             <h3>FitLife Social</h3>
-            <p>Social media</p>
-            <button class="portfolio-open-btn" aria-label="Ver proyecto">+</button>
+            <p>Pack RRSS</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
           </div>
         </div>
 
-        <div class="portfolio-item" data-category="web" data-title="Landing Page — Atomic Boost" data-desc="Desarrollo y diseño de landing page para agencia de marketing digital, con HTML5, CSS3 y JavaScript. Diseño responsivo y optimizado." data-color="#1c1c1c">
-          <div class="portfolio-thumb" style="background:linear-gradient(135deg,#1c1c1c,#444)">
-            <div class="portfolio-icon">▲</div>
+        <!-- Proyecto 4 -->
+        <div class="pf-item" data-category="web"
+          data-title="Landing Page — Atomic Boost"
+          data-cat="Sitio Web"
+          data-desc="Landing page para agencia de marketing digital. HTML5, CSS3 y JavaScript. Diseño responsivo y optimizado para conversión."
+          data-images='["linear-gradient(135deg,#1c1c1c,#444)","linear-gradient(135deg,#333,#666)","linear-gradient(135deg,#444,#c9952a)","linear-gradient(135deg,#1c1c1c,#2a2a2a)","linear-gradient(135deg,#222,#888)"]'>
+          <div class="pf-thumb" style="background:linear-gradient(135deg,#1c1c1c,#555)">
+            <div class="pf-glyph">▲</div>
           </div>
-          <div class="portfolio-overlay">
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Sitio web</span>
             <h3>Atomic Boost</h3>
-            <p>Sitio web</p>
-            <button class="portfolio-open-btn" aria-label="Ver proyecto">+</button>
+            <p>Landing Page</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
           </div>
         </div>
 
-        <div class="portfolio-item" data-category="editorial" data-title="Revista Anual — Tech Summit" data-desc="Diseño editorial para revista corporativa de 48 páginas: diagramación, selección tipográfica, tratamiento de imágenes e infografías." data-color="#2b1d3e">
-          <div class="portfolio-thumb" style="background:linear-gradient(135deg,#2b1d3e,#5c3080)">
-            <div class="portfolio-icon">▣</div>
+        <!-- Proyecto 5 – featured (2 cols) -->
+        <div class="pf-item pf-wide" data-category="editorial"
+          data-title="Revista Anual — Tech Summit 2024"
+          data-cat="Editorial"
+          data-desc="Diseño editorial para revista corporativa de 48 páginas: diagramación, tipografía, tratamiento de imágenes e infografías."
+          data-images='["linear-gradient(135deg,#2b1d3e,#5c3080)","linear-gradient(135deg,#5c3080,#8b5cf6)","linear-gradient(135deg,#8b5cf6,#c9952a)","linear-gradient(135deg,#2b1d3e,#6d28d9)","linear-gradient(135deg,#3d1f6e,#9333ea)"]'>
+          <div class="pf-thumb" style="background:linear-gradient(135deg,#2b1d3e,#8b5cf6)">
+            <div class="pf-glyph">▣</div>
+            <div class="pf-thumb-accent" style="background:linear-gradient(90deg,#8b5cf6,#c9952a)"></div>
           </div>
-          <div class="portfolio-overlay">
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Editorial</span>
             <h3>Tech Summit</h3>
-            <p>Editorial</p>
-            <button class="portfolio-open-btn" aria-label="Ver proyecto">+</button>
+            <p>Revista 48 páginas</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
           </div>
         </div>
 
-        <div class="portfolio-item" data-category="identidad" data-title="Logo & Manual — Arq. Monterroso" data-desc="Diseño de logotipo minimalista y manual de identidad para despacho de arquitectura. Estética limpia, elegante y atemporal." data-color="#1e2a1e">
-          <div class="portfolio-thumb" style="background:linear-gradient(135deg,#1e2a1e,#3a5a3a)">
-            <div class="portfolio-icon">⬡</div>
+        <!-- Proyecto 6 -->
+        <div class="pf-item" data-category="identidad"
+          data-title="Logo &amp; Manual — Arq. Monterroso"
+          data-cat="Identidad Visual"
+          data-desc="Logotipo minimalista y manual de identidad para despacho de arquitectura. Estética limpia, elegante y atemporal."
+          data-images='["linear-gradient(135deg,#1e2a1e,#3a5a3a)","linear-gradient(135deg,#3a5a3a,#5a8a5a)","linear-gradient(135deg,#2a4a2a,#c9952a)","linear-gradient(135deg,#1e2a1e,#4a7a4a)","linear-gradient(135deg,#243a24,#6aaa6a)"]'>
+          <div class="pf-thumb" style="background:linear-gradient(135deg,#1e2a1e,#5a8a5a)">
+            <div class="pf-glyph">⬡</div>
           </div>
-          <div class="portfolio-overlay">
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Identidad visual</span>
             <h3>Arq. Monterroso</h3>
-            <p>Identidad visual</p>
-            <button class="portfolio-open-btn" aria-label="Ver proyecto">+</button>
+            <p>Logo &amp; Manual</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
           </div>
         </div>
 
-        <div class="portfolio-item" data-category="branding" data-title="Branding Black MetaDryve" data-desc="Modelado 3D, vectorizado de logos, realidad aumentada y desarrollo de identidad visual para corporativo automotriz de lujo." data-color="#0a0a0a">
-          <div class="portfolio-thumb" style="background:linear-gradient(135deg,#0a0a0a,#2a2a2a)">
-            <div class="portfolio-icon">◈</div>
+        <!-- Proyecto 7 -->
+        <div class="pf-item" data-category="branding"
+          data-title="Black MetaDryve — Branding 3D"
+          data-cat="Branding 3D"
+          data-desc="Modelado 3D, vectorizado de logos, realidad aumentada e identidad visual para corporativo automotriz de lujo."
+          data-images='["linear-gradient(135deg,#0a0a0a,#2a2a2a)","linear-gradient(135deg,#111,#444)","linear-gradient(135deg,#222,#c9952a)","linear-gradient(135deg,#0a0a0a,#333)","linear-gradient(135deg,#1a1a1a,#666)"]'>
+          <div class="pf-thumb" style="background:linear-gradient(135deg,#0a0a0a,#444)">
+            <div class="pf-glyph">◈</div>
           </div>
-          <div class="portfolio-overlay">
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Branding 3D</span>
             <h3>Black MetaDryve</h3>
-            <p>Branding 3D</p>
-            <button class="portfolio-open-btn" aria-label="Ver proyecto">+</button>
+            <p>Identidad &amp; 3D</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
           </div>
         </div>
 
-        <div class="portfolio-item" data-category="social" data-title="Campaña Digital — Clínica Bienestar" data-desc="Estrategia visual completa para clínica médica en redes sociales: diseño de posts, historias, carruseles y banners publicitarios." data-color="#1a2e3a">
-          <div class="portfolio-thumb" style="background:linear-gradient(135deg,#1a2e3a,#2a5a7a)">
-            <div class="portfolio-icon">✿</div>
+        <!-- Proyecto 8 -->
+        <div class="pf-item" data-category="social"
+          data-title="Campaña Digital — Clínica Bienestar"
+          data-cat="Social Media"
+          data-desc="Estrategia visual para clínica médica: posts, historias, carruseles y banners publicitarios para Meta Ads."
+          data-images='["linear-gradient(135deg,#1a2e3a,#2a5a7a)","linear-gradient(135deg,#2a5a7a,#3a8aaa)","linear-gradient(135deg,#3a8aaa,#c9952a)","linear-gradient(135deg,#1a2e3a,#4a7a9a)","linear-gradient(135deg,#223a4a,#5a9aba)"]'>
+          <div class="pf-thumb" style="background:linear-gradient(135deg,#1a2e3a,#3a8aaa)">
+            <div class="pf-glyph">✿</div>
           </div>
-          <div class="portfolio-overlay">
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Social media</span>
             <h3>Clínica Bienestar</h3>
-            <p>Social media</p>
-            <button class="portfolio-open-btn" aria-label="Ver proyecto">+</button>
+            <p>Campaña digital</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
           </div>
         </div>
 
-        <div class="portfolio-item" data-category="web" data-title="Portafolio Web Personal" data-desc="Diseño y desarrollo completo de portafolio web personal: HTML5, CSS3 animado, JavaScript con efectos scroll, responsivo al 100%." data-color="#2a1a0a">
-          <div class="portfolio-thumb" style="background:linear-gradient(135deg,#2a1a0a,#c9952a)">
-            <div class="portfolio-icon">⬤</div>
+        <!-- Proyecto 9 -->
+        <div class="pf-item" data-category="web"
+          data-title="Portafolio Web Personal"
+          data-cat="Sitio Web"
+          data-desc="Diseño y desarrollo de portafolio web personal: HTML5, CSS3 animado, JavaScript con efectos scroll, 100% responsivo."
+          data-images='["linear-gradient(135deg,#2a1a0a,#c9952a)","linear-gradient(135deg,#c9952a,#e0ad40)","linear-gradient(135deg,#e0ad40,#1c1c1c)","linear-gradient(135deg,#3d2a0a,#a07520)","linear-gradient(135deg,#2a1a0a,#d4a62a)"]'>
+          <div class="pf-thumb" style="background:linear-gradient(135deg,#2a1a0a,#c9952a)">
+            <div class="pf-glyph">⬤</div>
           </div>
-          <div class="portfolio-overlay">
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Sitio web</span>
             <h3>Portfolio Web</h3>
-            <p>Sitio web</p>
-            <button class="portfolio-open-btn" aria-label="Ver proyecto">+</button>
+            <p>HTML5 / CSS3 / JS</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ─────────────── TRAYECTORIA ─────────────── -->
+  <!-- TRAYECTORIA -->
   <section id="trayectoria" class="section">
     <div class="container">
       <h2 class="section-title reveal-up">Trayec<span class="accent">toria</span></h2>
-
       <div class="timeline-tabs reveal-up">
-        <button class="tab-btn active" data-tab="experiencia">Experiencia</button>
-        <button class="tab-btn" data-tab="formacion">Formación</button>
+        <button class="tab-btn active" data-tab="experiencia">Experiencia profesional</button>
+        <button class="tab-btn" data-tab="formacion">Formación académica</button>
       </div>
 
-      <!-- Experiencia -->
       <div class="timeline" id="tab-experiencia">
         <div class="timeline-item reveal-left">
           <div class="timeline-dot"></div>
@@ -268,7 +380,7 @@
             <span class="timeline-date">Mar 2023 — Jul 2023</span>
             <h3>Corporativo Black MetaDryve</h3>
             <p class="timeline-role">Modelador 3D / Diseñador</p>
-            <p>Desarrollo de servicios de Realidad Aumentada, modelado 3D con Blender, vectorizado de logos, nociones de CRM y Wizard.</p>
+            <p>Realidad Aumentada, modelado 3D con Blender, vectorizado de logos, nociones de CRM y Wizard.</p>
           </div>
         </div>
         <div class="timeline-item reveal-left">
@@ -276,8 +388,8 @@
           <div class="timeline-content">
             <span class="timeline-date">Mar 2020 — Sep 2023</span>
             <h3>Freelance</h3>
-            <p class="timeline-role">Diseñador Gráfico</p>
-            <p>Más de 6 años realizando proyectos de diseño por cuenta propia, aprendiendo y mejorando continuamente habilidades.</p>
+            <p class="timeline-role">Diseñador Gráfico Independiente</p>
+            <p>Más de 6 años realizando proyectos de diseño por cuenta propia, aprendiendo y mejorando continuamente.</p>
           </div>
         </div>
         <div class="timeline-item reveal-right">
@@ -300,7 +412,6 @@
         </div>
       </div>
 
-      <!-- Formación -->
       <div class="timeline hidden" id="tab-formacion">
         <div class="timeline-item reveal-left">
           <div class="timeline-dot"></div>
@@ -308,7 +419,7 @@
             <span class="timeline-date">2023 — 2024</span>
             <h3>Especialidad en Diseño Gráfico Digital</h3>
             <p class="timeline-role">Computación del Golfo · Certificado Adobe</p>
-            <p>Dominio de Photoshop, Illustrator, InDesign, After Effects y Premiere Pro. Proyectos de diseño digital, editorial y audiovisual.</p>
+            <p>Photoshop, Illustrator, InDesign, After Effects y Premiere Pro. Proyectos de diseño digital, editorial y audiovisual.</p>
           </div>
         </div>
         <div class="timeline-item reveal-right">
@@ -317,7 +428,7 @@
             <span class="timeline-date">2022 — 2023</span>
             <h3>Desarrollo Web Completo</h3>
             <p class="timeline-role">Udemy</p>
-            <p>HTML, CSS, SASS, JavaScript, Fetch, PHP, POO, MVC y MySQL. Desarrollo de sitios web dinámicos, responsivos y conectados a bases de datos.</p>
+            <p>HTML, CSS, SASS, JavaScript, PHP, POO, MVC y MySQL. Sitios web dinámicos, responsivos y conectados a bases de datos.</p>
           </div>
         </div>
         <div class="timeline-item reveal-left">
@@ -326,7 +437,7 @@
             <span class="timeline-date">2022 — 2023</span>
             <h3>Excel Básico-Intermedio (Macros, VBA)</h3>
             <p class="timeline-role">Udemy</p>
-            <p>Fórmulas dinámicas: SI, BUSCARV, ÍNDICE y COINCIDIR. Programación con Visual Basic y uso de macros.</p>
+            <p>Fórmulas dinámicas: SI, BUSCARV, ÍNDICE y COINCIDIR. Programación con Visual Basic y macros.</p>
           </div>
         </div>
         <div class="timeline-item reveal-right">
@@ -335,7 +446,7 @@
             <span class="timeline-date">2018 — 2021</span>
             <h3>Lic. Informática y Sistemas de Seguridad</h3>
             <p class="timeline-role">Centro Universitario Felipe Carrillo Puerto</p>
-            <p>Bases de datos MySQL y SQL Server, programación, desarrollo web, aplicaciones móviles, seguridad informática y virtualización.</p>
+            <p>Bases de datos MySQL y SQL Server, programación, desarrollo web, seguridad informática y virtualización.</p>
           </div>
         </div>
         <div class="timeline-item reveal-left">
@@ -344,117 +455,15 @@
             <span class="timeline-date">2015 — 2018</span>
             <h3>Preparatoria COBAY Santa Rosa</h3>
             <p class="timeline-role">Capacitación en Informática</p>
-            <p>Certificado en manejo de procesadores de texto digitales y conocimientos en diseño gráfico con CorelDRAW.</p>
+            <p>Certificado en procesadores de texto digitales y diseño gráfico con CorelDRAW.</p>
           </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ─────────────── PLANES Y SERVICIOS ─────────────── -->
-  <section id="planes" class="section section-dark">
-    <div class="container">
-      <h2 class="section-title reveal-up">Planes y <span class="accent">servicios</span></h2>
-      <p class="section-subtitle reveal-up">Soluciones completas adaptadas a las necesidades de tu negocio</p>
-
-      <div class="services-grid">
-        <div class="service-card reveal-up">
-          <div class="service-icon">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/><path d="M24 14v10l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </div>
-          <h3>Identidad Visual</h3>
-          <p>Logotipo, manual de marca, paleta de colores y tipografía que comunican la esencia de tu negocio.</p>
-          <ul class="service-list">
-            <li>Logotipo en múltiples versiones</li>
-            <li>Manual de identidad corporativa</li>
-            <li>Formatos: AI, PDF, PNG, SVG</li>
-            <li>Hasta 3 propuestas iniciales</li>
-          </ul>
-          <a href="#contacto" class="btn btn-service">Solicitar</a>
-        </div>
-
-        <div class="service-card service-card-featured reveal-up">
-          <div class="service-badge">Más popular</div>
-          <div class="service-icon">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="40" height="28" rx="3" stroke="currentColor" stroke-width="2"/><path d="M16 40h16M24 36v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </div>
-          <h3>Branding Completo</h3>
-          <p>Paquete integral que cubre identidad visual, redes sociales y materiales impresos para un posicionamiento sólido.</p>
-          <ul class="service-list">
-            <li>Todo lo de Identidad Visual</li>
-            <li>Pack de 15 plantillas para RRSS</li>
-            <li>Papelería corporativa</li>
-            <li>Revisiones ilimitadas (2 sem)</li>
-          </ul>
-          <a href="#contacto" class="btn btn-primary">Solicitar</a>
-        </div>
-
-        <div class="service-card reveal-up">
-          <div class="service-icon">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12h32M8 24h20M8 36h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="38" cy="34" r="6" stroke="currentColor" stroke-width="2"/><path d="M42 38l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </div>
-          <h3>Social Media</h3>
-          <p>Diseño de contenido visual para redes sociales con coherencia de marca, impacto y alta tasa de engagement.</p>
-          <ul class="service-list">
-            <li>Pack mensual de 20-30 piezas</li>
-            <li>Stories, posts y carruseles</li>
-            <li>Formato para todas las plataformas</li>
-            <li>Revisiones incluidas</li>
-          </ul>
-          <a href="#contacto" class="btn btn-service">Solicitar</a>
-        </div>
-
-        <div class="service-card reveal-up">
-          <div class="service-icon">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 36L18 12l10 14 6-8 8 18H6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-          </div>
-          <h3>Diseño Editorial</h3>
-          <p>Revistas, brochures, catálogos y material impreso con diagramación profesional y atención al detalle.</p>
-          <ul class="service-list">
-            <li>Diagramación completa</li>
-            <li>Infografías y gráficos</li>
-            <li>Preparación para imprenta</li>
-            <li>PDF interactivo incluido</li>
-          </ul>
-          <a href="#contacto" class="btn btn-service">Solicitar</a>
-        </div>
-
-        <div class="service-card reveal-up">
-          <div class="service-icon">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 14l8 6-8 6M22 26h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="6" width="40" height="36" rx="3" stroke="currentColor" stroke-width="2"/></svg>
-          </div>
-          <h3>Desarrollo Web</h3>
-          <p>Sitios web y landing pages responsivos con HTML5, CSS3 y JavaScript. Diseño moderno y optimización SEO básica.</p>
-          <ul class="service-list">
-            <li>Diseño &amp; desarrollo completo</li>
-            <li>Responsivo en todos los dispositivos</li>
-            <li>Formulario de contacto</li>
-            <li>Entrega en 7-14 días hábiles</li>
-          </ul>
-          <a href="#contacto" class="btn btn-service">Solicitar</a>
-        </div>
-
-        <div class="service-card reveal-up">
-          <div class="service-icon">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="24,4 30,18 46,18 33,28 38,44 24,34 10,44 15,28 2,18 18,18" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-          </div>
-          <h3>Consultoría de Marca</h3>
-          <p>Análisis de identidad visual actual, propuestas de mejora y estrategia de posicionamiento digital para tu empresa.</p>
-          <ul class="service-list">
-            <li>Auditoría visual de marca</li>
-            <li>Reporte de mejoras</li>
-            <li>Sesión de estrategia (1h)</li>
-            <li>Seguimiento 30 días</li>
-          </ul>
-          <a href="#contacto" class="btn btn-service">Solicitar</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─────────────── CONTACTO ─────────────── -->
-  <section id="contacto" class="section">
+  <!-- CONTACTO -->
+  <section id="contacto" class="section section-dark">
     <div class="container">
       <h2 class="section-title reveal-up">Conta<span class="accent">cto</span></h2>
       <p class="section-subtitle reveal-up">¿Listo para dar vida a tu proyecto? Hablemos.</p>
@@ -462,36 +471,29 @@
       <div class="contact-grid">
         <div class="contact-info reveal-left">
           <div class="contact-item">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-            </div>
-            <div>
-              <p class="contact-label">Teléfono / WhatsApp</p>
-              <a href="tel:+525544705244">+52 554 470 5244</a>
-            </div>
+            <div class="contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div>
+            <div><p class="contact-label">Teléfono / WhatsApp</p><a href="tel:+525544705244">+52 554 470 5244</a></div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            </div>
-            <div>
-              <p class="contact-label">Correo</p>
-              <a href="mailto:roberto@ejemplo.com">roberto@ejemplo.com</a>
-            </div>
+            <div class="contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+            <div><p class="contact-label">Correo</p><a href="mailto:roberto@ejemplo.com">roberto@ejemplo.com</a></div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            </div>
-            <div>
-              <p class="contact-label">Ubicación</p>
-              <span>Mérida, Yucatán, México</span>
-            </div>
+            <div class="contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+            <div><p class="contact-label">Ubicación</p><span>Mérida, Yucatán, México</span></div>
           </div>
-          <div class="contact-socials">
-            <a href="#" class="social-link" aria-label="LinkedIn">in</a>
-            <a href="#" class="social-link" aria-label="Behance">Be</a>
-            <a href="#" class="social-link" aria-label="Instagram">ig</a>
+
+          <p class="contact-social-title">Sígueme en redes</p>
+          <div class="csocials-grid">
+            <a href="#" target="_blank" class="csc facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg><span>Facebook</span></a>
+            <a href="#" target="_blank" class="csc instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
+            <a href="#" target="_blank" class="csc threads"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 12.03c-.12-5.22-3.43-7.84-7.67-7.84-4.41 0-7.67 2.96-7.67 8.06s3.19 7.75 7.67 7.75c2.94 0 5.25-1.06 6.47-2.93l-1.8-1.04c-.82 1.17-2.38 1.91-4.63 1.91-3.15 0-5.24-1.88-5.35-5.27h12.96c.01-.21.02-.43.02-.64zm-13-1.06c.21-2.97 1.98-4.72 5.29-4.72 2.88 0 4.83 1.47 5.18 4.72H6.59z"/></svg><span>Threads</span></a>
+            <a href="#" target="_blank" class="csc linkedin"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg><span>LinkedIn</span></a>
+            <a href="#" target="_blank" class="csc tiktok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.84 4.84 0 01-1.01-.07z"/></svg><span>TikTok</span></a>
+            <a href="#" target="_blank" class="csc pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.77 1.22-5.16 1.22-5.16s-.31-.62-.31-1.54c0-1.45.84-2.53 1.88-2.53.89 0 1.32.67 1.32 1.47 0 .9-.57 2.24-.87 3.48-.25 1.04.52 1.88 1.53 1.88 1.84 0 3.08-2.37 3.08-5.18 0-2.14-1.44-3.75-4.05-3.75-2.96 0-4.8 2.21-4.8 4.67 0 .85.24 1.44.62 1.9.17.2.19.29.13.52-.06.22-.18.73-.23.93-.07.28-.29.38-.54.28-1.53-.63-2.24-2.31-2.24-4.21 0-3.13 2.64-6.88 7.89-6.88 4.22 0 7.01 3.06 7.01 6.35 0 4.35-2.42 7.62-5.97 7.62-1.19 0-2.32-.64-2.7-1.37l-.75 2.89c-.27 1.02-.99 2.3-1.47 3.08.66.2 1.35.31 2.07.31 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg><span>Pinterest</span></a>
+            <a href="#" target="_blank" class="csc youtube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 7.19a2.76 2.76 0 00-1.94-1.96C17.88 4.75 12 4.75 12 4.75s-5.88 0-7.64.48A2.76 2.76 0 002.42 7.19 28.9 28.9 0 002 12a28.9 28.9 0 00.42 4.81 2.76 2.76 0 001.94 1.96C6.12 19.25 12 19.25 12 19.25s5.88 0 7.64-.48a2.76 2.76 0 001.94-1.95A28.9 28.9 0 0022 12a28.9 28.9 0 00-.42-4.81zM10 15.5v-7l6 3.5-6 3.5z"/></svg><span>YouTube</span></a>
+            <a href="#" target="_blank" class="csc blogger"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.5 12.5v1a1.5 1.5 0 01-1.5 1.5h-7a1.5 1.5 0 01-1.5-1.5v-6A1.5 1.5 0 0110 6h4.5a1.5 1.5 0 011.5 1.5V9h1a1.5 1.5 0 011.5 1.5v2zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg><span>Blogger</span></a>
+            <a href="#" target="_blank" class="csc github"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg><span>GitHub</span></a>
           </div>
         </div>
 
@@ -510,12 +512,12 @@
             <label for="servicio">Servicio de interés</label>
             <select id="servicio" name="servicio">
               <option value="">Selecciona un servicio</option>
-              <option>Identidad Visual</option>
+              <option>Identidad Visual / Logo</option>
               <option>Branding Completo</option>
               <option>Social Media</option>
               <option>Diseño Editorial</option>
               <option>Desarrollo Web</option>
-              <option>Consultoría de Marca</option>
+              <option>Modelado 3D / Realidad Aumentada</option>
               <option>Otro</option>
             </select>
           </div>
@@ -527,45 +529,76 @@
             <span>Enviar mensaje</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/></svg>
           </button>
-          <div class="form-success hidden" id="formSuccess">
-            ✓ Mensaje enviado correctamente. ¡Nos ponemos en contacto pronto!
-          </div>
+          <div class="form-success hidden" id="formSuccess">✓ ¡Mensaje enviado! Nos ponemos en contacto muy pronto.</div>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- ─────────────── FOOTER ─────────────── -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-inner">
-        <span class="footer-logo">R.A.</span>
+      <div class="footer-top">
+        <a href="#inicio" class="footer-logo">R.A.</a>
+        <div class="footer-socials">
+          <a href="#" target="_blank" class="fsoc facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" target="_blank" class="fsoc instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" target="_blank" class="fsoc threads" aria-label="Threads"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 12.03c-.12-5.22-3.43-7.84-7.67-7.84-4.41 0-7.67 2.96-7.67 8.06s3.19 7.75 7.67 7.75c2.94 0 5.25-1.06 6.47-2.93l-1.8-1.04c-.82 1.17-2.38 1.91-4.63 1.91-3.15 0-5.24-1.88-5.35-5.27h12.96c.01-.21.02-.43.02-.64zm-13-1.06c.21-2.97 1.98-4.72 5.29-4.72 2.88 0 4.83 1.47 5.18 4.72H6.59z"/></svg></a>
+          <a href="#" target="_blank" class="fsoc linkedin" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" target="_blank" class="fsoc tiktok" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.84 4.84 0 01-1.01-.07z"/></svg></a>
+          <a href="#" target="_blank" class="fsoc pinterest" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.77 1.22-5.16 1.22-5.16s-.31-.62-.31-1.54c0-1.45.84-2.53 1.88-2.53.89 0 1.32.67 1.32 1.47 0 .9-.57 2.24-.87 3.48-.25 1.04.52 1.88 1.53 1.88 1.84 0 3.08-2.37 3.08-5.18 0-2.14-1.44-3.75-4.05-3.75-2.96 0-4.8 2.21-4.8 4.67 0 .85.24 1.44.62 1.9.17.2.19.29.13.52-.06.22-.18.73-.23.93-.07.28-.29.38-.54.28-1.53-.63-2.24-2.31-2.24-4.21 0-3.13 2.64-6.88 7.89-6.88 4.22 0 7.01 3.06 7.01 6.35 0 4.35-2.42 7.62-5.97 7.62-1.19 0-2.32-.64-2.7-1.37l-.75 2.89c-.27 1.02-.99 2.3-1.47 3.08.66.2 1.35.31 2.07.31 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg></a>
+          <a href="#" target="_blank" class="fsoc youtube" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 7.19a2.76 2.76 0 00-1.94-1.96C17.88 4.75 12 4.75 12 4.75s-5.88 0-7.64.48A2.76 2.76 0 002.42 7.19 28.9 28.9 0 002 12a28.9 28.9 0 00.42 4.81 2.76 2.76 0 001.94 1.96C6.12 19.25 12 19.25 12 19.25s5.88 0 7.64-.48a2.76 2.76 0 001.94-1.95A28.9 28.9 0 0022 12a28.9 28.9 0 00-.42-4.81zM10 15.5v-7l6 3.5-6 3.5z"/></svg></a>
+          <a href="#" target="_blank" class="fsoc blogger" aria-label="Blogger"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.5 12.5v1a1.5 1.5 0 01-1.5 1.5h-7a1.5 1.5 0 01-1.5-1.5v-6A1.5 1.5 0 0110 6h4.5a1.5 1.5 0 011.5 1.5V9h1a1.5 1.5 0 011.5 1.5v2zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg></a>
+          <a href="#" target="_blank" class="fsoc github" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
         <p>© 2025 Roberto Alejandro Azcorra Cauich · Todos los derechos reservados</p>
         <a href="tel:+525544705244" class="footer-phone">+52 554 470 5244</a>
       </div>
     </div>
   </footer>
 
-  <!-- ─────────────── PORTFOLIO MODAL ─────────────── -->
-  <div id="portfolioModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Detalle de proyecto">
+  <!-- MODAL PORTAFOLIO CON GALERÍA -->
+  <div id="portfolioModal" class="modal-overlay" role="dialog" aria-modal="true">
     <div class="modal-box">
-      <button class="modal-close" id="modalClose" aria-label="Cerrar">✕</button>
-      <div class="modal-color-bar" id="modalColorBar"></div>
-      <div class="modal-body">
-        <h2 id="modalTitle"></h2>
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+
+      <div class="modal-gallery-area">
+        <button class="gal-nav gal-prev" id="galleryPrev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="gal-main" id="galleryMain">
+          <div class="gal-counter" id="galleryCounter">1 / 5</div>
+        </div>
+        <button class="gal-nav gal-next" id="galleryNext" aria-label="Siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <div class="gal-thumbs" id="galleryThumbs"></div>
+
+      <div class="modal-info">
+        <div class="modal-info-top">
+          <div>
+            <span class="modal-cat-tag" id="modalCatTag"></span>
+            <h2 id="modalTitle"></h2>
+          </div>
+          <a href="#contacto" class="btn btn-primary btn-sm" id="modalCta">Solicitar este servicio</a>
+        </div>
         <p id="modalDesc"></p>
-        <a href="#contacto" class="btn btn-primary" id="modalCta" onclick="closeModal()">Solicitar este servicio</a>
       </div>
     </div>
   </div>
 
-  <!-- ─────────────── FLOATING BUTTONS ─────────────── -->
+  <!-- FABs -->
   <a href="https://wa.me/525544705244" target="_blank" rel="noopener" class="fab fab-whatsapp" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
-
   <button id="backToTop" class="fab fab-top" aria-label="Volver arriba">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
   </button>
 
   <script src="script.js"></script>
