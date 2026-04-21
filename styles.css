@@ -38,13 +38,12 @@ ul { list-style: none; }
 input, select, textarea { -webkit-appearance: none; appearance: none; }
 
 /* ──────────────────────────────────────────────
-   PRELOADER — FONDO BLANCO, 0.5 s
+   PRELOADER — FONDO BLANCO
 ────────────────────────────────────────────── */
 #preloader {
   position: fixed; inset: 0; z-index: 9999;
   background: var(--white);
   display: flex; align-items: center; justify-content: center;
-  /* Salida suave */
   transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 #preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
@@ -74,24 +73,22 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   height: 100%;
   background: linear-gradient(90deg, var(--mustard-dark), var(--mustard-light));
   border-radius: 99px; width: 0;
-  /* Rápido: 0.4 s */
   animation: preloader-fill 0.4s ease forwards;
 }
 @keyframes preloader-fill { to { width: 100%; } }
 
 /* ──────────────────────────────────────────────
-   NAVBAR
-   La altura la fija el nav-container con height: var(--nav-h).
-   Así el nav nunca se "corta" al hacer scroll.
+   NAVBAR — CORREGIDO (siempre fijo)
 ────────────────────────────────────────────── */
 #navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  /* Sin height aquí — lo controla nav-container */
+  height: var(--nav-h);          /* altura fija */
   background: rgba(255,255,255,0.97);
-  /* Sin backdrop-filter: evita artefactos de recorte en Chrome/Safari */
   transition: background 0.35s ease, box-shadow 0.35s ease;
+  transform: translateZ(0);      /* fuerza capa de composición */
+  will-change: transform;        /* optimización */
 }
 #navbar.scrolled {
   background: var(--dark);
@@ -101,13 +98,11 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 .nav-container {
   max-width: 1320px;
   margin: 0 auto;
-  /* height fijo = navbar nunca varía de tamaño al hacer scroll */
-  height: var(--nav-h);
+  height: 100%;                  /* hereda la altura de #navbar */
   padding: 0 1.75rem;
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  /* Nunca wrappear */
   flex-wrap: nowrap;
   overflow: visible;
 }
@@ -123,12 +118,10 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   align-items: center;
   gap: 0;
   margin-left: auto;
-  /* Permitir overflow visible para que no se recorten */
   overflow: visible;
   flex-shrink: 1;
 }
 
-/* Links — nav blanco (sin scroll) */
 .nav-link {
   position: relative;
   font-size: 0.82rem; font-weight: 500;
@@ -152,12 +145,10 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 .nav-link.active::after { width: 60%; }
 .nav-link.active      { color: var(--mustard); }
 
-/* Links — nav oscuro (con scroll) */
 #navbar.scrolled .nav-link         { color: rgba(255,255,255,0.82); }
 #navbar.scrolled .nav-link:hover   { color: var(--mustard-light); }
 #navbar.scrolled .nav-link.active  { color: var(--mustard); }
 
-/* Botón Descargar CV */
 .nav-cv {
   display: flex; align-items: center; gap: 0.35rem;
   background: rgba(201,149,42,0.1);
@@ -173,7 +164,6 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 #navbar.scrolled .nav-cv { color: var(--mustard-light) !important; background: rgba(201,149,42,0.12); }
 #navbar.scrolled .nav-cv:hover { background: var(--mustard); color: var(--dark) !important; }
 
-/* Botón Mi Behance */
 .nav-behance-outline {
   display: flex; align-items: center; gap: 0.35rem;
   background: transparent;
@@ -189,7 +179,6 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 #navbar.scrolled .nav-behance-outline { color: var(--mustard-light) !important; border-color: var(--mustard-light); }
 #navbar.scrolled .nav-behance-outline:hover { background: var(--mustard); color: var(--dark) !important; }
 
-/* Teléfono */
 .nav-phone {
   display: flex; align-items: center; gap: 0.4rem;
   font-size: 0.78rem; font-weight: 600;
@@ -201,7 +190,6 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 }
 .nav-phone:hover { background: var(--mustard-light); transform: translateY(-1px); }
 
-/* Socials en menú móvil */
 .nav-socials-mobile {
   display: none;
   align-items: center; justify-content: center; gap: 0.6rem;
@@ -218,7 +206,6 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 .nsm-icon svg { width: 16px; height: 16px; }
 .nsm-icon:hover { background: var(--mustard); color: var(--dark); }
 
-/* Hamburger */
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
   padding: 5px; flex-shrink: 0;
@@ -233,7 +220,6 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Overlay backdrop (cerrar menú móvil) */
 #nav-backdrop {
   display: none;
   position: fixed; inset: 0; z-index: 998;
@@ -242,7 +228,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 #nav-backdrop.active { display: block; }
 
 /* ──────────────────────────────────────────────
-   HERO — FONDO BLANCO
+   HERO
 ────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
@@ -299,7 +285,6 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 @keyframes cursor-blink { 0%,100%{opacity:1} 50%{opacity:0} }
 .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-/* Foto */
 .hero-image {
   position: relative; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
@@ -329,7 +314,6 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   font-weight: 700; color: var(--mustard); opacity: 0.35;
 }
 
-/* Stats flotantes — posición fuera del círculo */
 .hero-stat {
   position: absolute;
   background: var(--white); border-radius: var(--radius);
@@ -347,10 +331,8 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   font-weight: 500; white-space: nowrap; margin-top: 2px;
 }
 
-/* Flecha scroll — subida para que siempre sea visible */
 .hero-scroll-btn {
   position: absolute;
-  /* Subido respecto a la versión anterior */
   bottom: 3.5rem; left: 50%;
   transform: translateX(-50%);
   width: 44px; height: 44px; border-radius: 50%;
@@ -405,12 +387,16 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 .accent { color: var(--mustard); font-style: italic; }
 
 /* ──────────────────────────────────────────────
-   SOBRE MÍ
+   SOBRE MÍ — CORREGIDO (flex-wrap)
 ────────────────────────────────────────────── */
 .about-photos-row {
-  display: flex; gap: 1.25rem;
-  justify-content: center; align-items: flex-end;
-  margin: 2.5rem 0 3rem; perspective: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+  align-items: flex-end;
+  margin: 2.5rem 0 3rem;
+  perspective: 800px;
 }
 .aph-card {
   position: relative; border-radius: var(--radius-lg);
@@ -483,7 +469,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 }
 
 /* ──────────────────────────────────────────────
-   PORTAFOLIO — FONDO BLANCO
+   PORTAFOLIO
 ────────────────────────────────────────────── */
 #portafolio.section-dark {
   background: var(--white);
@@ -620,7 +606,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 .timeline-content p:last-child { font-size: 0.86rem; color: #555; line-height: 1.65; margin: 0; }
 
 /* ──────────────────────────────────────────────
-   CONTACTO — FONDO BLANCO
+   CONTACTO
 ────────────────────────────────────────────── */
 #contacto.section-dark {
   background: var(--white);
@@ -874,31 +860,29 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 }
 
 /* ──────────────────────────────────────────────
-   RESPONSIVE — MOBILE 768px
-   NAV: Se resetea por completo para móvil.
-   Sin backdrop-filter, sin height fijo en #navbar,
-   el height lo da nav-container a través de --nav-h.
+   RESPONSIVE — MOBILE 768px (CORREGIDO)
 ────────────────────────────────────────────── */
 @media (max-width: 768px) {
   :root { --nav-h: 60px; }
 
-  /* El navbar ocupa exactamente --nav-h en móvil */
+  /* Aseguramos que el navbar mantenga altura fija */
   #navbar {
     background: var(--white);
+    height: var(--nav-h);
   }
   #navbar.scrolled {
     background: var(--dark);
   }
+
   .nav-container {
     padding: 0 1.25rem;
-    /* height: var(--nav-h) ya hereda el valor actualizado (60px) */
-    gap: 0.5rem;
+    height: 100%;
   }
 
-  /* Menú desplegable */
   .nav-menu {
     position: fixed;
-    top: 60px; left: 0; right: 0;
+    top: var(--nav-h);
+    left: 0; right: 0;
     background: var(--dark);
     flex-direction: column; align-items: flex-start;
     padding: 1.25rem 1.5rem 1.5rem;
@@ -909,12 +893,10 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
     border-top: 1px solid rgba(255,255,255,0.07);
     box-shadow: 0 8px 24px rgba(0,0,0,0.28);
     z-index: 999;
-    /* Evitar cualquier clip: overflow visible */
     overflow: visible;
   }
   .nav-menu.open { transform: translateY(0); opacity: 1; }
 
-  /* Sin línea de subrayado en móvil */
   .nav-link::after { display: none; }
   .nav-link {
     width: 100%; padding: 0.72rem 0.5rem;
@@ -937,7 +919,6 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   .nav-socials-mobile { display: flex; width: 100%; }
   .nav-phone { display: none; }
 
-  /* Hamburger a la derecha */
   .hamburger { display: flex; margin-left: auto; }
 
   /* Hero */
@@ -955,9 +936,10 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   }
   .hero-stats-row { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
 
-  /* Flecha scroll — más arriba en móvil */
-  .hero-scroll-btn { bottom: 2rem; }
+  /* Flecha más arriba */
+  .hero-scroll-btn { bottom: 1.5rem; }
 
+  /* Sobre mí: las fotos ya no se desbordan gracias a flex-wrap */
   .about-photos-row { gap: 0.75rem; }
   .aph-card-1 { width: 160px; height: 210px; }
   .aph-card-2 { width: 180px; height: 235px; }
@@ -985,9 +967,9 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 ────────────────────────────────────────────── */
 @media (max-width: 480px) {
   .section { padding: 4rem 1.25rem; }
-  .hero { padding: calc(var(--nav-h) + 1rem) 1.25rem 4.5rem; }
+  .hero { padding: calc(var(--nav-h) + 1rem) 1.25rem 4rem; }
   .hero-ring-outer { width: 80vw; height: 80vw; }
-  .hero-scroll-btn { bottom: 1.5rem; }
+  .hero-scroll-btn { bottom: 1rem; }
 
   .about-photos-row { gap: 0.5rem; }
   .aph-card-1, .aph-card-3 { width: 115px; height: 155px; }

@@ -4,11 +4,9 @@
 
 /* ── PRELOADER — duración: 0.5 s ───────────── */
 window.addEventListener('load', () => {
-  // 500 ms en lugar de 2000 ms
   setTimeout(() => {
     const pre = document.getElementById('preloader');
     if (pre) pre.classList.add('hidden');
-    // Animar hero inmediatamente después
     document.querySelectorAll('.hero .reveal-up, .hero .reveal-right').forEach((el, i) => {
       setTimeout(() => el.classList.add('visible'), 80 + i * 110);
     });
@@ -22,19 +20,16 @@ const navbar    = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
 const navMenu   = document.getElementById('navMenu');
 
-// Backdrop para cerrar menú al tocar fuera
 const navBackdrop = document.createElement('div');
 navBackdrop.id = 'nav-backdrop';
 document.body.appendChild(navBackdrop);
 
-/* Cambiar fondo del navbar al hacer scroll */
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
   highlightActiveLink();
   toggleBackToTop();
 }, { passive: true });
 
-/* Marcar link activo según sección visible */
 function highlightActiveLink() {
   const navH  = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h') || '68');
   const scrollY = window.scrollY + navH + 20;
@@ -48,7 +43,6 @@ function highlightActiveLink() {
   });
 }
 
-/* Hamburger */
 hamburger.addEventListener('click', e => {
   e.stopPropagation();
   toggleMobileMenu();
@@ -68,15 +62,11 @@ function closeMobileMenu() {
   document.body.style.overflow = '';
 }
 
-// Cerrar con backdrop
 navBackdrop.addEventListener('click', closeMobileMenu);
-
-// Cerrar al hacer clic en un enlace
 navMenu.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', closeMobileMenu);
 });
 
-/* ── SMOOTH SCROLL ─────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
@@ -91,7 +81,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 /* ══════════════════════════════════════════════
-   TYPEWRITER — Arranca a los 700 ms
+   TYPEWRITER
    ══════════════════════════════════════════════ */
 const phrases = [
   'Creatividad, tecnología y seguridad para soluciones digitales completas.',
@@ -110,7 +100,6 @@ function typeLoop() {
   else if (deleting && charIdx === 0) { deleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; delay = 350; }
   setTimeout(typeLoop, delay);
 }
-// Arranca pronto, ya que el preloader solo dura 0.5 s
 setTimeout(typeLoop, 700);
 
 /* ══════════════════════════════════════════════
@@ -134,7 +123,6 @@ const revealObs = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal-up:not(.hero *), .reveal-left, .reveal-right')
   .forEach(el => revealObs.observe(el));
 
-/* Barras de habilidades */
 function animateSkillBars() {
   document.querySelectorAll('.skill-fill').forEach(bar => {
     const w = bar.getAttribute('data-width');
@@ -143,7 +131,7 @@ function animateSkillBars() {
 }
 
 /* ══════════════════════════════════════════════
-   PORTAFOLIO — FILTRO CON TRANSICIÓN
+   PORTAFOLIO — FILTRO
    ══════════════════════════════════════════════ */
 const filterBtns = document.querySelectorAll('.filter-btn');
 const pfItems    = Array.from(document.querySelectorAll('.pf-item'));
@@ -164,7 +152,6 @@ filterBtns.forEach(btn => {
 
     isFiltering = true;
 
-    // Fase 1: salida
     toHide.forEach(item => item.classList.add('pf-exiting'));
 
     setTimeout(() => {
@@ -182,10 +169,8 @@ filterBtns.forEach(btn => {
         }
       });
 
-      // Reflow forzado
       void document.getElementById('portfolioGrid').offsetHeight;
 
-      // Fase 3: entrada con stagger
       toShow.forEach((item, i) => {
         setTimeout(() => item.classList.remove('pf-entering'), i * 55);
       });
@@ -255,7 +240,6 @@ galleryNext.addEventListener('click', () => {
   renderGallery();
 });
 
-// Swipe táctil
 let touchStartX = 0;
 galleryMain.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
 galleryMain.addEventListener('touchend', e => {
@@ -268,7 +252,6 @@ galleryMain.addEventListener('touchend', e => {
   }
 });
 
-// Teclado
 document.addEventListener('keydown', e => {
   if (!modal.classList.contains('open')) return;
   if (e.key === 'Escape')     closeModal();
@@ -276,7 +259,6 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') { currentImgIdx = (currentImgIdx + 1) % currentImages.length; renderGallery(); }
 });
 
-// Abrir modal
 pfItems.forEach(item => {
   const openBtn = item.querySelector('.pf-open');
   if (openBtn) openBtn.addEventListener('click', e => { e.stopPropagation(); openModal(item); });
@@ -372,7 +354,7 @@ document.querySelectorAll('.aph-card').forEach(card => {
 });
 
 /* ══════════════════════════════════════════════
-   HERO — STATS EN MÓVIL (mover bajo el círculo)
+   HERO — STATS EN MÓVIL
    ══════════════════════════════════════════════ */
 function setupHeroStats() {
   const heroImage = document.querySelector('.hero-image');
@@ -391,14 +373,8 @@ function setupHeroStats() {
     if (s1 && !statsRow.contains(s1)) statsRow.appendChild(s1);
     if (s2 && !statsRow.contains(s2)) statsRow.appendChild(s2);
   } else {
-    // Desktop: devolver los stats al hero-image
-    const ring = document.querySelector('.hero-ring-outer');
-    if (s1 && ring && !heroImage.querySelector('.hero-stat-1')) {
-      heroImage.appendChild(s1);
-    }
-    if (s2 && ring && !heroImage.querySelector('.hero-stat-2')) {
-      heroImage.appendChild(s2);
-    }
+    if (s1 && heroImage && !heroImage.contains(s1)) heroImage.appendChild(s1);
+    if (s2 && heroImage && !heroImage.contains(s2)) heroImage.appendChild(s2);
     if (statsRow) statsRow.remove();
   }
 }
