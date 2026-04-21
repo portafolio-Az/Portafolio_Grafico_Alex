@@ -995,7 +995,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 
 /* Borde mostaza con glow (efecto neon) */
 .hero-photo-ring {
-  border: 8px solid var(--mustard);
+  border: 3px solid var(--mustard);
   box-shadow: 0 0 9px rgba(201,149,42,0.5), 0 0 16px rgba(201,149,42,0.3);
   transition: box-shadow 0.5s ease;
   animation: neonPulse 2s infinite alternate;

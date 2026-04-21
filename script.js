@@ -1,8 +1,8 @@
 /* ══════════════════════════════════════════════
-   SCRIPT.JS — Roberto Azcorra Portfolio
+   SCRIPT.JS — Roberto Azcorra Portfolio (CORREGIDO)
    ══════════════════════════════════════════════ */
 
-/* ── PRELOADER — duración: 0.5 s ───────────── */
+/* ── PRELOADER ──────────────────────────────── */
 window.addEventListener('load', () => {
   setTimeout(() => {
     const pre = document.getElementById('preloader');
@@ -182,7 +182,7 @@ filterBtns.forEach(btn => {
 });
 
 /* ══════════════════════════════════════════════
-   PORTAFOLIO — MODAL + GALERÍA
+   PORTAFOLIO — MODAL + GALERÍA (CORREGIDO)
    ══════════════════════════════════════════════ */
 const modal          = document.getElementById('portfolioModal');
 const modalClose     = document.getElementById('modalClose');
@@ -197,6 +197,20 @@ const galleryNext    = document.getElementById('galleryNext');
 
 let currentImages = [];
 let currentImgIdx = 0;
+
+// Función para detectar si una cadena es un gradiente CSS
+function isGradient(str) {
+  return str.includes('linear-gradient') || str.includes('radial-gradient') || str.includes('conic-gradient');
+}
+
+// Función para aplicar fondo correctamente (imagen o gradiente)
+function setBackground(element, value) {
+  if (isGradient(value)) {
+    element.style.background = value;
+  } else {
+    element.style.background = `url(${value}) center/cover no-repeat`;
+  }
+}
 
 function openModal(item) {
   const title = item.dataset.title || '';
@@ -217,15 +231,15 @@ function openModal(item) {
 }
 
 function renderGallery() {
-  const bg = currentImages[currentImgIdx] || 'linear-gradient(135deg,#2a2a2a,#555)';
-  galleryMain.style.background = bg;
-  galleryCounter.textContent   = `${currentImgIdx + 1} / ${currentImages.length}`;
+  const current = currentImages[currentImgIdx];
+  setBackground(galleryMain, current);
+  galleryCounter.textContent = `${currentImgIdx + 1} / ${currentImages.length}`;
 
   galleryThumbs.innerHTML = '';
   currentImages.forEach((img, i) => {
     const thumb = document.createElement('div');
     thumb.className = 'gal-thumb' + (i === currentImgIdx ? ' active' : '');
-    thumb.style.background = img;
+    setBackground(thumb, img);
     thumb.addEventListener('click', () => { currentImgIdx = i; renderGallery(); });
     galleryThumbs.appendChild(thumb);
   });
