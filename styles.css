@@ -194,7 +194,8 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 /* Socials en menú móvil */
 .nav-socials-mobile {
   display: none;
-  align-items: center; gap: 0.65rem;
+  align-items: center; justify-content: center;
+  gap: 0.65rem;
   padding: 1rem 0 0.25rem;
   border-top: 1px solid rgba(255,255,255,0.1);
   margin-top: 0.75rem;
@@ -241,7 +242,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   position: relative; overflow: hidden;
-  padding: calc(var(--nav-h) + 2rem) 2rem 5rem;
+  padding: calc(var(--nav-h) + 2rem) 2rem 4rem;
 }
 .hero-blob { position: absolute; border-radius: 50%; pointer-events: none; }
 .hero-blob-1 {
@@ -339,7 +340,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 }
 
 .hero-scroll-btn {
-  position: absolute; bottom: 2.5rem; left: 50%;
+  position: absolute; bottom: 2rem; left: 50%;
   transform: translateX(-50%);
   width: 44px; height: 44px; border-radius: 50%;
   border: 2px solid rgba(201,149,42,0.4);
@@ -674,9 +675,8 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 .csc.facebook:hover  { background: rgba(24,119,242,0.1);  border-color: rgba(24,119,242,0.25);  color: #1877f2; }
 .csc.instagram:hover { background: rgba(225,48,108,0.08); border-color: rgba(225,48,108,0.25);  color: #e1306c; }
 .csc.threads:hover   { background: rgba(0,0,0,0.06);       border-color: rgba(0,0,0,0.2);        color: #000;    }
-.csc.linkedin:hover  { background: rgba(0,119,181,0.09);  border-color: rgba(0,119,181,0.25);   color: #0077b5; }
-.csc.tiktok:hover    { background: rgba(0,0,0,0.06);       border-color: rgba(0,0,0,0.18);       color: #010101; }
 .csc.pinterest:hover { background: rgba(230,0,35,0.08);   border-color: rgba(230,0,35,0.22);    color: #e60023; }
+.csc.tiktok:hover    { background: rgba(0,0,0,0.06);       border-color: rgba(0,0,0,0.18);       color: #010101; }
 .csc.youtube:hover   { background: rgba(255,0,0,0.08);    border-color: rgba(255,0,0,0.22);     color: #ff0000; }
 .csc.blogger:hover   { background: rgba(255,93,40,0.08);  border-color: rgba(255,93,40,0.22);   color: #ff5d28; }
 .csc.github:hover    { background: rgba(0,0,0,0.06);       border-color: rgba(0,0,0,0.2);        color: #24292f; }
@@ -946,6 +946,10 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   }
   .hero-stats-row { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
 
+  .hero-scroll-btn {
+    bottom: 1.5rem;
+  }
+
   .about-photos-row { gap: 0.75rem; }
   .aph-card-1 { width: 160px; height: 210px; }
   .aph-card-2 { width: 180px; height: 235px; }
@@ -976,6 +980,10 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   .hero { padding: calc(var(--nav-h) + 1rem) 1.25rem 3.5rem; }
 
   .hero-ring-outer { width: 80vw; height: 80vw; }
+
+  .hero-scroll-btn {
+    bottom: 1rem;
+  }
 
   .about-photos-row { gap: 0.5rem; }
   .aph-card-1, .aph-card-3 { width: 115px; height: 155px; }

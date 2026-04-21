@@ -2,6 +2,18 @@
    SERVICIOS.JS — Roberto Azcorra
    ══════════════════════════════════════════════ */
 
+/* ── PRELOADER ──────────────────────────────── */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const pre = document.getElementById('preloader');
+    if (pre) pre.classList.add('hidden');
+    // Animar elementos del hero después del preloader
+    document.querySelectorAll('.srv-hero .reveal-up').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), 100 + i * 100);
+    });
+  }, 2000);
+});
+
 /* ── NAVBAR ─────────────────────────────────── */
 const navbar    = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
@@ -83,7 +95,6 @@ document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right').forEach(el 
    PLAN CARDS — Scroll reveal con stagger
    ══════════════════════════════════════════════ */
 const cardObs = new IntersectionObserver((entries) => {
-  // Cuando el grid entra en viewport, animar cada card con delay
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const grid = entry.target;
@@ -116,7 +127,6 @@ document.querySelectorAll('.brochure-card').forEach(c => brochureObs.observe(c))
 
 /* ══════════════════════════════════════════════
    HOVER: EFECTO DE BRILLO EN PLAN CARDS
-   Movimiento de gradiente con el cursor
    ══════════════════════════════════════════════ */
 document.querySelectorAll('.plan-card').forEach(card => {
   card.addEventListener('mousemove', e => {
@@ -190,14 +200,12 @@ document.querySelectorAll('.plan-btn').forEach(btn => {
 
 /* ══════════════════════════════════════════════
    NÚMEROS ANIMADOS EN LOS PRECIOS (counter up)
-   Se activan una sola vez al entrar en viewport
    ══════════════════════════════════════════════ */
 function parsePrice(str) {
   return parseInt(str.replace(/[^0-9]/g, ''), 10) || 0;
 }
 
 function formatPrice(num, originalStr) {
-  // Detectar si tiene coma de miles (>999) o es simple
   if (num >= 1000) return '$' + num.toLocaleString('es-MX');
   return '$' + num;
 }
@@ -213,7 +221,6 @@ const counterObs = new IntersectionObserver((entries) => {
     function update() {
       const elapsed  = Date.now() - start;
       const progress = Math.min(elapsed / duration, 1);
-      // Ease-out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.round(target * eased);
       el.textContent = formatPrice(current, el.dataset.target);
@@ -224,7 +231,6 @@ const counterObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 
-// Preparar los .plan-amount con data-target
 document.querySelectorAll('.plan-amount').forEach(el => {
   el.dataset.target = el.textContent;
   counterObs.observe(el);
