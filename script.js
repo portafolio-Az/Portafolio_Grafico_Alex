@@ -364,7 +364,7 @@ document.querySelectorAll('.aph-card').forEach(card => {
     card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateY(-10px) scale(1.04)`;
   });
   card.addEventListener('mouseleave', () => {
-    card.style.transform = ''; // devolver a la rotación definida en CSS
+    card.style.transform = '';
   });
 });
 
@@ -388,7 +388,6 @@ function setupHeroStats() {
     if (s1 && !statsRow.contains(s1)) statsRow.appendChild(s1);
     if (s2 && !statsRow.contains(s2)) statsRow.appendChild(s2);
   } else {
-    // En desktop: devolver al hero-image directamente
     if (s1 && heroImage && !heroImage.contains(s1)) heroImage.appendChild(s1);
     if (s2 && heroImage && !heroImage.contains(s2)) heroImage.appendChild(s2);
     if (statsRow) statsRow.remove();
