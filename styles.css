@@ -865,10 +865,20 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 @media (max-width: 768px) {
   :root { --nav-h: 60px; }
 
-  /* Aseguramos que el navbar mantenga altura fija */
+  /* ─── NAVBAR FIX MÓVIL ───────────────────────
+     Se eliminan transform y will-change del #navbar global.
+     En Android Chrome / iOS Safari, will-change: transform sobre
+     position: fixed crea una capa de composición separada que
+     puede "taparse" o desaparecer durante el scroll por inercia.
+     Sin estos hints el navegador mantiene el nav correctamente fijo.
+  ─────────────────────────────────────────────── */
   #navbar {
+    transform: none !important;
+    will-change: auto !important;
     background: var(--white);
     height: var(--nav-h);
+    /* Forzar nuevo contexto de apilamiento sin afectar fixed */
+    isolation: isolate;
   }
   #navbar.scrolled {
     background: var(--dark);
@@ -879,9 +889,10 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
     height: 100%;
   }
 
+  /* Menú desplegable — usa top fijo, NO hereda transform del padre */
   .nav-menu {
     position: fixed;
-    top: var(--nav-h);
+    top: 60px;               /* valor hardcodeado = --nav-h en móvil */
     left: 0; right: 0;
     background: var(--dark);
     flex-direction: column; align-items: flex-start;
@@ -921,7 +932,14 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 
   .hamburger { display: flex; margin-left: auto; }
 
-  /* Hero */
+  /* ─── HERO ───────────────────────────────────
+     En móvil el hero usa column-reverse, apilando
+     foto + stats + texto → la sección puede superar 150vh.
+     Con position: absolute; bottom: X el botón quedaba
+     fuera del primer viewport. La solución: anclarlo
+     desde arriba para que siempre caiga dentro del
+     primer 100vh visible.
+  ─────────────────────────────────────────────── */
   .hero { padding: calc(var(--nav-h) + 1.5rem) 1.25rem 5rem; }
   .hero-content { flex-direction: column-reverse; text-align: center; gap: 1.5rem; }
   .hero-text { max-width: 100%; }
@@ -936,10 +954,17 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   }
   .hero-stats-row { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
 
-  /* Flecha más arriba */
-  .hero-scroll-btn { bottom: 1.5rem; }
+  /* ─── FLECHA SCROLL: siempre visible en primer viewport ───
+     Se ancla con top desde la parte superior del hero en lugar
+     de bottom, de modo que siempre cae dentro del primer 100vh
+     sin importar cuánto contenido apile el hero en móvil.
+  ─────────────────────────────────────────────── */
+  .hero-scroll-btn {
+    top: calc(100vh - 88px);
+    bottom: auto;
+  }
 
-  /* Sobre mí: las fotos ya no se desbordan gracias a flex-wrap */
+  /* Sobre mí */
   .about-photos-row { gap: 0.75rem; }
   .aph-card-1 { width: 160px; height: 210px; }
   .aph-card-2 { width: 180px; height: 235px; }
@@ -969,7 +994,11 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   .section { padding: 4rem 1.25rem; }
   .hero { padding: calc(var(--nav-h) + 1rem) 1.25rem 4rem; }
   .hero-ring-outer { width: 80vw; height: 80vw; }
-  .hero-scroll-btn { bottom: 1rem; }
+  /* Mantener el ancla desde arriba también en pantallas pequeñas */
+  .hero-scroll-btn {
+    top: calc(100vh - 75px);
+    bottom: auto;
+  }
 
   .about-photos-row { gap: 0.5rem; }
   .aph-card-1, .aph-card-3 { width: 115px; height: 155px; }
