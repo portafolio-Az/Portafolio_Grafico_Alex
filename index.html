@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="Assets/favicon.png">
 </head>
 <body>
 
@@ -31,13 +32,9 @@
         <a href="#trayectoria" class="nav-link">Trayectoria</a>
         <a href="servicios.html" class="nav-link">Planes y Servicios</a>
         <a href="#contacto" class="nav-link">Contacto</a>
-        <a href="cv.pdf" download class="nav-link nav-cv">
+        <a href="Assets/CV_Alejandro.pdf" download class="nav-link nav-cv">
           <svg viewBox="0 0 20 20" fill="currentColor" width="13" height="13"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
           Descargar CV
-        </a>
-        <a href="#" target="_blank" class="nav-link nav-behance-outline">
-          <svg viewBox="0 0 20 20" fill="currentColor" width="13" height="13"><path d="M10 2c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm1.5 6h3v1h-3V8zm0 2h3v1h-3v-1zm-4.5-2h2v3h-2V8zm0 4h2v1h-2v-1zm-1-4h-2v1h2v-1zm0 3h-2v1h2v-1z"/></svg>
-          Mi Behance
         </a>
         <div class="nav-socials-mobile">
           <a href="https://www.facebook.com/TeenInformaticsCode?locale=es_LA" target="_blank" aria-label="Facebook" class="nsm-icon">
@@ -71,6 +68,8 @@
   <section id="inicio" class="hero">
     <div class="hero-blob hero-blob-1"></div>
     <div class="hero-blob hero-blob-2"></div>
+    <!-- Círculo de luz neon detrás de la foto -->
+    <div class="hero-glow"></div>
     <div class="hero-content">
       <div class="hero-text">
         <p class="hero-greeting reveal-up">Hola, soy</p>
@@ -83,27 +82,27 @@
           <span id="typewriter"></span><span class="cursor">|</span>
         </p>
         <div class="hero-cta reveal-up">
-          <a href="#contacto" class="btn btn-primary">Trabajemos juntos</a>
+          <a href="#contacto" class="btn btn-dark">Trabajemos juntos</a>
           <a href="#portafolio" class="btn btn-outline-dark">Ver proyectos</a>
         </div>
       </div>
-<div class="hero-image reveal-right">
-  <div class="hero-ring-outer">
-    <div class="hero-photo-ring">
-      <div class="hero-photo-placeholder">
-        <img src="Assets/alex00.jpg" alt="Roberto Azcorra">
+      <div class="hero-image reveal-right">
+        <div class="hero-ring-outer">
+          <div class="hero-photo-ring">
+            <div class="hero-photo-placeholder">
+              <img src="Assets/alex00.jpg" alt="Roberto Azcorra">
+            </div>
+          </div>
+        </div>
+        <div class="hero-stat hero-stat-1">
+          <span class="stat-number">6+</span>
+          <span class="stat-label">Años freelance</span>
+        </div>
+        <div class="hero-stat hero-stat-2">
+          <span class="stat-number">40+</span>
+          <span class="stat-label">Proyectos</span>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="hero-stat hero-stat-1">
-    <span class="stat-number">6+</span>
-    <span class="stat-label">Años freelance</span>
-  </div>
-  <div class="hero-stat hero-stat-2">
-    <span class="stat-number">40+</span>
-    <span class="stat-label">Proyectos</span>
-  </div>
-</div>
     </div>
     <a href="#sobre-mi" class="hero-scroll-btn" aria-label="Bajar">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
@@ -115,20 +114,20 @@
     <div class="container">
       <h2 class="section-title reveal-up">Sobre <span class="accent">mí</span></h2>
 
-<div class="about-photos-row reveal-up">
-  <div class="aph-card aph-card-1">
-    <img src="Assets/alex01.jpg" alt="Roberto Azcorra">
-    <div class="aph-label">Roberto Azcorra</div>
-  </div>
-  <div class="aph-card aph-card-2">
-    <img src="Assets/alex02.jpg" alt="Diseñador Gráfico">
-    <div class="aph-label">Diseñador Gráfico</div>
-  </div>
-  <div class="aph-card aph-card-3">
-    <img src="Assets/alex03.jpg" alt="Desarrollador Web">
-    <div class="aph-label">Desarrollador Web</div>
-  </div>
-</div>
+      <div class="about-photos-row reveal-up">
+        <div class="aph-card aph-card-1">
+          <img src="Assets/alex01.jpg" alt="Roberto Azcorra">
+          <div class="aph-label">Roberto Azcorra</div>
+        </div>
+        <div class="aph-card aph-card-2">
+          <img src="Assets/alex02.jpg" alt="Diseñador Gráfico">
+          <div class="aph-label">Diseñador Gráfico</div>
+        </div>
+        <div class="aph-card aph-card-3">
+          <img src="Assets/alex03.jpg" alt="Desarrollador Web">
+          <div class="aph-label">Desarrollador Web</div>
+        </div>
+      </div>
 
       <div class="about-bio-row">
         <div class="about-bio-text reveal-left">
@@ -194,162 +193,163 @@
         <button class="filter-btn" data-filter="behance">Mi portafolio en Behance</button>
       </div>
 
-<div class="portfolio-grid" id="portfolioGrid">
-  <!-- Proyecto 1 -->
-  <div class="pf-item pf-wide" data-category="identidad"
-    data-title="Identidad Corporativa Nexus"
-    data-cat="Identidad Visual"
-    data-desc="Desarrollo completo de identidad visual para empresa tecnológica: logotipo, paleta de color, tipografía y manual de marca."
-    data-images='["Assets/alex00.jpg","Assets/alex01.jpg","Assets/alex02.jpg","Assets/alex03.jpg","Assets/alex00.jpg"]'>
-    <div class="pf-thumb">
-      <img src="Assets/alex02.jpg" alt="Nexus Corp">
-      <div class="pf-thumb-accent" style="background:linear-gradient(90deg,#e94560,#533483)"></div>
-    </div>
-    <div class="pf-overlay">
-      <span class="pf-cat-tag">Identidad visual</span>
-      <h3>Nexus Corp</h3>
-      <p>Branding &amp; Manual de marca</p>
-      <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
-    </div>
-  </div>
+      <div class="portfolio-grid" id="portfolioGrid">
+        <!-- Proyecto 1 -->
+        <div class="pf-item pf-wide" data-category="identidad"
+          data-title="Identidad Corporativa Nexus"
+          data-cat="Identidad Visual"
+          data-desc="Desarrollo completo de identidad visual para empresa tecnológica: logotipo, paleta de color, tipografía y manual de marca."
+          data-images='["Assets/alex00.jpg","Assets/alex01.jpg","Assets/alex02.jpg","Assets/alex03.jpg","Assets/alex00.jpg"]'>
+          <div class="pf-thumb">
+            <img src="Assets/alex02.jpg" alt="Nexus Corp">
+            <div class="pf-thumb-accent" style="background:linear-gradient(90deg,#e94560,#533483)"></div>
+          </div>
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Identidad visual</span>
+            <h3>Nexus Corp</h3>
+            <p>Branding &amp; Manual de marca</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
+          </div>
+        </div>
 
-  <!-- Proyecto 2 -->
-  <div class="pf-item" data-category="branding"
-    data-title="Branding Café Origen"
-    data-cat="Branding"
-    data-desc="Branding completo para cafetería artesanal: logotipo, empaque, señalética y material de punto de venta."
-    data-images='["Assets/alex01.jpg","Assets/alex02.jpg","Assets/alex03.jpg"]'>
-    <div class="pf-thumb">
-      <img src="Assets/alex01.jpg" alt="Café Origen">
-    </div>
-    <div class="pf-overlay">
-      <span class="pf-cat-tag">Branding</span>
-      <h3>Café Origen</h3>
-      <p>Identidad &amp; Empaque</p>
-      <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
-    </div>
-  </div>
+        <!-- Proyecto 2 -->
+        <div class="pf-item" data-category="branding"
+          data-title="Branding Café Origen"
+          data-cat="Branding"
+          data-desc="Branding completo para cafetería artesanal: logotipo, empaque, señalética y material de punto de venta."
+          data-images='["Assets/alex01.jpg","Assets/alex02.jpg","Assets/alex03.jpg"]'>
+          <div class="pf-thumb">
+            <img src="Assets/alex01.jpg" alt="Café Origen">
+          </div>
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Branding</span>
+            <h3>Café Origen</h3>
+            <p>Identidad &amp; Empaque</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
+          </div>
+        </div>
 
-  <!-- Proyecto 3 -->
-  <div class="pf-item" data-category="social"
-    data-title="Social Media — FitLife"
-    data-cat="Social Media"
-    data-desc="Pack de 30 plantillas para redes sociales con coherencia visual y alto engagement."
-    data-images='["Assets/alex02.jpg","Assets/alex03.jpg","Assets/alex00.jpg"]'>
-    <div class="pf-thumb">
-      <img src="Assets/alex02.jpg" alt="FitLife Social">
-    </div>
-    <div class="pf-overlay">
-      <span class="pf-cat-tag">Social media</span>
-      <h3>FitLife Social</h3>
-      <p>Pack RRSS</p>
-      <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
-    </div>
-  </div>
+        <!-- Proyecto 3 -->
+        <div class="pf-item" data-category="social"
+          data-title="Social Media — FitLife"
+          data-cat="Social Media"
+          data-desc="Pack de 30 plantillas para redes sociales con coherencia visual y alto engagement."
+          data-images='["Assets/alex02.jpg","Assets/alex03.jpg","Assets/alex00.jpg"]'>
+          <div class="pf-thumb">
+            <img src="Assets/alex02.jpg" alt="FitLife Social">
+          </div>
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Social media</span>
+            <h3>FitLife Social</h3>
+            <p>Pack RRSS</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
+          </div>
+        </div>
 
-  <!-- Proyecto 4 -->
-  <div class="pf-item" data-category="web"
-    data-title="Landing Page — Atomic Boost"
-    data-cat="Sitio Web"
-    data-desc="Landing page para agencia de marketing digital. Diseño responsivo y optimizado para conversión."
-    data-images='["Assets/alex03.jpg","Assets/alex00.jpg","Assets/alex01.jpg"]'>
-    <div class="pf-thumb">
-      <img src="Assets/alex03.jpg" alt="Atomic Boost">
-    </div>
-    <div class="pf-overlay">
-      <span class="pf-cat-tag">Sitio web</span>
-      <h3>Atomic Boost</h3>
-      <p>Landing Page</p>
-      <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
-    </div>
-  </div>
+        <!-- Proyecto 4 -->
+        <div class="pf-item" data-category="web"
+          data-title="Landing Page — Atomic Boost"
+          data-cat="Sitio Web"
+          data-desc="Landing page para agencia de marketing digital. Diseño responsivo y optimizado para conversión."
+          data-images='["Assets/alex03.jpg","Assets/alex00.jpg","Assets/alex01.jpg"]'>
+          <div class="pf-thumb">
+            <img src="Assets/alex03.jpg" alt="Atomic Boost">
+          </div>
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Sitio web</span>
+            <h3>Atomic Boost</h3>
+            <p>Landing Page</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
+          </div>
+        </div>
 
-  <!-- Proyecto 5 -->
-  <div class="pf-item pf-wide" data-category="editorial"
-    data-title="Revista Anual — Tech Summit 2024"
-    data-cat="Editorial"
-    data-desc="Diseño editorial para revista corporativa de 48 páginas: diagramación, tipografía, infografías."
-    data-images='["Assets/alex00.jpg","Assets/alex01.jpg","Assets/alex02.jpg","Assets/alex03.jpg"]'>
-    <div class="pf-thumb">
-      <img src="Assets/alex00.jpg" alt="Tech Summit">
-      <div class="pf-thumb-accent" style="background:linear-gradient(90deg,#8b5cf6,#c9952a)"></div>
-    </div>
-    <div class="pf-overlay">
-      <span class="pf-cat-tag">Editorial</span>
-      <h3>Tech Summit</h3>
-      <p>Revista 48 páginas</p>
-      <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
-    </div>
-  </div>
+        <!-- Proyecto 5 -->
+        <div class="pf-item pf-wide" data-category="editorial"
+          data-title="Revista Anual — Tech Summit 2024"
+          data-cat="Editorial"
+          data-desc="Diseño editorial para revista corporativa de 48 páginas: diagramación, tipografía, infografías."
+          data-images='["Assets/alex00.jpg","Assets/alex01.jpg","Assets/alex02.jpg","Assets/alex03.jpg"]'>
+          <div class="pf-thumb">
+            <img src="Assets/alex00.jpg" alt="Tech Summit">
+            <div class="pf-thumb-accent" style="background:linear-gradient(90deg,#8b5cf6,#c9952a)"></div>
+          </div>
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Editorial</span>
+            <h3>Tech Summit</h3>
+            <p>Revista 48 páginas</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
+          </div>
+        </div>
 
-  <!-- Proyecto 6 -->
-  <div class="pf-item" data-category="identidad"
-    data-title="Logo &amp; Manual — Arq. Monterroso"
-    data-cat="Identidad Visual"
-    data-desc="Logotipo minimalista y manual de identidad para despacho de arquitectura."
-    data-images='["Assets/alex01.jpg","Assets/alex02.jpg","Assets/alex03.jpg"]'>
-    <div class="pf-thumb">
-      <img src="Assets/alex01.jpg" alt="Arq. Monterroso">
-    </div>
-    <div class="pf-overlay">
-      <span class="pf-cat-tag">Identidad visual</span>
-      <h3>Arq. Monterroso</h3>
-      <p>Logo &amp; Manual</p>
-      <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
-    </div>
-  </div>
+        <!-- Proyecto 6 -->
+        <div class="pf-item" data-category="identidad"
+          data-title="Logo &amp; Manual — Arq. Monterroso"
+          data-cat="Identidad Visual"
+          data-desc="Logotipo minimalista y manual de identidad para despacho de arquitectura."
+          data-images='["Assets/alex01.jpg","Assets/alex02.jpg","Assets/alex03.jpg"]'>
+          <div class="pf-thumb">
+            <img src="Assets/alex01.jpg" alt="Arq. Monterroso">
+          </div>
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Identidad visual</span>
+            <h3>Arq. Monterroso</h3>
+            <p>Logo &amp; Manual</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
+          </div>
+        </div>
 
-  <!-- Proyecto 7 -->
-  <div class="pf-item" data-category="branding"
-    data-title="Black MetaDryve — Branding 3D"
-    data-cat="Branding 3D"
-    data-desc="Modelado 3D, vectorizado de logos, realidad aumentada e identidad visual para automotriz."
-    data-images='["Assets/alex02.jpg","Assets/alex03.jpg","Assets/alex00.jpg"]'>
-    <div class="pf-thumb">
-      <img src="Assets/alex02.jpg" alt="Black MetaDryve">
-    </div>
-    <div class="pf-overlay">
-      <span class="pf-cat-tag">Branding 3D</span>
-      <h3>Black MetaDryve</h3>
-      <p>Identidad &amp; 3D</p>
-      <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
-    </div>
-  </div>
+        <!-- Proyecto 7 -->
+        <div class="pf-item" data-category="branding"
+          data-title="Black MetaDryve — Branding 3D"
+          data-cat="Branding 3D"
+          data-desc="Modelado 3D, vectorizado de logos, realidad aumentada e identidad visual para automotriz."
+          data-images='["Assets/alex02.jpg","Assets/alex03.jpg","Assets/alex00.jpg"]'>
+          <div class="pf-thumb">
+            <img src="Assets/alex02.jpg" alt="Black MetaDryve">
+          </div>
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Branding 3D</span>
+            <h3>Black MetaDryve</h3>
+            <p>Identidad &amp; 3D</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
+          </div>
+        </div>
 
-  <!-- Proyecto 8 -->
-  <div class="pf-item" data-category="social"
-    data-title="Campaña Digital — Clínica Bienestar"
-    data-cat="Social Media"
-    data-desc="Estrategia visual para clínica médica: posts, historias, carruseles y banners."
-    data-images='["Assets/alex03.jpg","Assets/alex00.jpg","Assets/alex01.jpg"]'>
-    <div class="pf-thumb">
-      <img src="Assets/alex03.jpg" alt="Clínica Bienestar">
-    </div>
-    <div class="pf-overlay">
-      <span class="pf-cat-tag">Social media</span>
-      <h3>Clínica Bienestar</h3>
-      <p>Campaña digital</p>
-      <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
-    </div>
-  </div>
+        <!-- Proyecto 8 -->
+        <div class="pf-item" data-category="social"
+          data-title="Campaña Digital — Clínica Bienestar"
+          data-cat="Social Media"
+          data-desc="Estrategia visual para clínica médica: posts, historias, carruseles y banners."
+          data-images='["Assets/alex03.jpg","Assets/alex00.jpg","Assets/alex01.jpg"]'>
+          <div class="pf-thumb">
+            <img src="Assets/alex03.jpg" alt="Clínica Bienestar">
+          </div>
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Social media</span>
+            <h3>Clínica Bienestar</h3>
+            <p>Campaña digital</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
+          </div>
+        </div>
 
-  <!-- Proyecto 9 -->
-  <div class="pf-item" data-category="web"
-    data-title="Portafolio Web Personal"
-    data-cat="Sitio Web"
-    data-desc="Diseño y desarrollo de portafolio web personal: HTML5, CSS3 animado, JavaScript, 100% responsivo."
-    data-images='["Assets/alex00.jpg","Assets/alex01.jpg","Assets/alex02.jpg","Assets/alex03.jpg"]'>
-    <div class="pf-thumb">
-      <img src="Assets/alex00.jpg" alt="Portfolio Web">
+        <!-- Proyecto 9 -->
+        <div class="pf-item" data-category="web"
+          data-title="Portafolio Web Personal"
+          data-cat="Sitio Web"
+          data-desc="Diseño y desarrollo de portafolio web personal: HTML5, CSS3 animado, JavaScript, 100% responsivo."
+          data-images='["Assets/alex00.jpg","Assets/alex01.jpg","Assets/alex02.jpg","Assets/alex03.jpg"]'>
+          <div class="pf-thumb">
+            <img src="Assets/alex00.jpg" alt="Portfolio Web">
+          </div>
+          <div class="pf-overlay">
+            <span class="pf-cat-tag">Sitio web</span>
+            <h3>Portfolio Web</h3>
+            <p>HTML5 / CSS3 / JS</p>
+            <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="pf-overlay">
-      <span class="pf-cat-tag">Sitio web</span>
-      <h3>Portfolio Web</h3>
-      <p>HTML5 / CSS3 / JS</p>
-      <button class="pf-open" aria-label="Ver galería">Ver proyecto</button>
-    </div>
-  </div>
-</div>
   </section>
 
   <!-- TRAYECTORIA -->

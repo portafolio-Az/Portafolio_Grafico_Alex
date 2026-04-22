@@ -38,7 +38,7 @@ ul { list-style: none; }
 input, select, textarea { -webkit-appearance: none; appearance: none; }
 
 /* ──────────────────────────────────────────────
-   PRELOADER — FONDO BLANCO
+   PRELOADER
 ────────────────────────────────────────────── */
 #preloader {
   position: fixed; inset: 0; z-index: 9999;
@@ -78,17 +78,17 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 @keyframes preloader-fill { to { width: 100%; } }
 
 /* ──────────────────────────────────────────────
-   NAVBAR — CORREGIDO (siempre fijo)
+   NAVBAR (común para index y servicios)
 ────────────────────────────────────────────── */
 #navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  height: var(--nav-h);          /* altura fija */
+  height: var(--nav-h);
   background: rgba(255,255,255,0.97);
   transition: background 0.35s ease, box-shadow 0.35s ease;
-  transform: translateZ(0);      /* fuerza capa de composición */
-  will-change: transform;        /* optimización */
+  transform: translateZ(0);
+  will-change: transform;
 }
 #navbar.scrolled {
   background: var(--dark);
@@ -98,7 +98,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 .nav-container {
   max-width: 1320px;
   margin: 0 auto;
-  height: 100%;                  /* hereda la altura de #navbar */
+  height: 100%;
   padding: 0 1.75rem;
   display: flex;
   align-items: center;
@@ -251,6 +251,24 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   bottom: -10%; left: -5%;
   background: radial-gradient(ellipse, rgba(201,149,42,0.05) 0%, transparent 70%);
 }
+
+/* Círculo de luz neon difuminado detrás de la foto */
+.hero-glow {
+  position: absolute;
+  width: 80vmin;
+  height: 80vmin;
+  max-width: 550px;
+  max-height: 550px;
+  background: radial-gradient(circle, rgba(201,149,42,0.25) 0%, rgba(201,149,42,0) 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  top: 50%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .hero-content {
   max-width: 1280px; width: 100%;
   display: flex; align-items: center;
@@ -259,23 +277,23 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 }
 .hero-text { flex: 1; max-width: 580px; }
 .hero-greeting {
-  font-size: 0.95rem; font-weight: 600;
+  font-size: 1rem; font-weight: 600;
   color: var(--mustard); letter-spacing: 0.2em;
   text-transform: uppercase; margin-bottom: 0.6rem;
 }
 .hero-name {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4.8vw, 4rem);
+  font-size: clamp(3rem, 5.5vw, 4.8rem);
   font-weight: 700; color: var(--dark);
   line-height: 1.08; margin-bottom: 0.6rem;
 }
 .hero-name-accent { color: var(--mustard); font-style: italic; }
 .hero-title {
-  font-size: 0.95rem; color: var(--mid);
+  font-size: 1rem; color: var(--mid);
   font-weight: 400; letter-spacing: 0.04em; margin-bottom: 1.5rem;
 }
 .hero-typewriter {
-  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   color: #444; min-height: 3rem; margin-bottom: 2.25rem; line-height: 1.65;
 }
 .cursor {
@@ -285,20 +303,54 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 @keyframes cursor-blink { 0%,100%{opacity:1} 50%{opacity:0} }
 .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-.hero-image {
-  position: relative; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
+/* Botón negro (Trabajemos juntos) */
+.btn-dark {
+  background: var(--dark);
+  color: var(--white);
+  border: none;
 }
-.hero-ring-outer { position: relative; width: 340px; height: 340px; }
+.btn-dark:hover {
+  background: #2a2a2a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+/* Hero image */
+.hero-image {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-ring-outer {
+  position: relative;
+  width: 340px;
+  height: 340px;
+}
 .hero-photo-ring {
   width: 100%; height: 100%; border-radius: 50%;
-  border: 3px solid var(--mustard); padding: 8px;
+  border: 3px solid var(--mustard);
+  padding: 8px;
   animation: hero-float 5s ease-in-out infinite;
-  background: var(--off-white); overflow: hidden;
+  background: var(--off-white);
+  overflow: hidden;
+  box-shadow: 0 0 9px rgba(201,149,42,0.5), 0 0 16px rgba(201,149,42,0.3);
+  animation: neonPulse 2s infinite alternate, hero-float 5s ease-in-out infinite;
 }
 @keyframes hero-float {
   0%,100% { transform: translateY(0); }
   50%     { transform: translateY(-14px); }
+}
+@keyframes neonPulse {
+  0% {
+    box-shadow: 0 0 4px rgba(201,149,42,0.4), 0 0 8px rgba(201,149,42,0.2);
+    border-color: rgba(201,149,42,0.8);
+  }
+  100% {
+    box-shadow: 0 0 16px rgba(201,149,42,0.8), 0 0 32px rgba(201,149,42,0.5);
+    border-color: var(--mustard-light);
+  }
 }
 .hero-photo-placeholder {
   width: 100%; height: 100%; border-radius: 50%;
@@ -314,21 +366,70 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   font-weight: 700; color: var(--mustard); opacity: 0.35;
 }
 
+/* Anillo pulsante */
+.hero-ring-outer {
+  position: relative;
+}
+.hero-ring-outer::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
+  border-radius: 50%;
+  border: 2px solid var(--mustard-light);
+  opacity: 0;
+  pointer-events: none;
+  animation: ringPulse 3s infinite ease-in-out;
+  z-index: 0;
+}
+@keyframes ringPulse {
+  0% { transform: scale(0.95); opacity: 0.7; border-width: 2px; }
+  50% { transform: scale(1.1); opacity: 0.2; border-width: 1px; }
+  100% { transform: scale(0.95); opacity: 0.7; border-width: 2px; }
+}
+
+/* Stats flotantes (más grandes y más cerca) */
 .hero-stat {
   position: absolute;
-  background: var(--white); border-radius: var(--radius);
-  padding: 0.7rem 1.1rem; box-shadow: var(--shadow-lg);
-  text-align: center; border: 1px solid rgba(201,149,42,0.15); z-index: 2;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.3rem;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  border: 1px solid rgba(201,149,42,0.25);
+  z-index: 2;
+  backdrop-filter: blur(4px);
+  min-width: 110px;
 }
-.hero-stat-1 { top: 0; left: -145px; animation: hero-float 5s ease-in-out infinite; animation-delay: -2s; }
-.hero-stat-2 { bottom: 10px; right: -135px; animation: hero-float 5s ease-in-out infinite; animation-delay: -1s; }
+.hero-stat-1 {
+  top: -20px;
+  left: -80px;
+  animation: hero-float 5s ease-in-out infinite;
+  animation-delay: -2s;
+}
+.hero-stat-2 {
+  bottom: -20px;
+  right: -80px;
+  animation: hero-float 5s ease-in-out infinite;
+  animation-delay: -1s;
+}
 .stat-number {
-  display: block; font-family: var(--font-display);
-  font-size: 1.9rem; font-weight: 700; color: var(--mustard); line-height: 1;
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--mustard);
+  line-height: 1;
 }
 .stat-label {
-  display: block; font-size: 0.7rem; color: var(--mid);
-  font-weight: 500; white-space: nowrap; margin-top: 2px;
+  display: block;
+  font-size: 0.75rem;
+  color: var(--mid);
+  font-weight: 600;
+  white-space: nowrap;
+  margin-top: 4px;
 }
 
 .hero-scroll-btn {
@@ -387,7 +488,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 .accent { color: var(--mustard); font-style: italic; }
 
 /* ──────────────────────────────────────────────
-   SOBRE MÍ — CORREGIDO (flex-wrap)
+   SOBRE MÍ
 ────────────────────────────────────────────── */
 .about-photos-row {
   display: flex;
@@ -412,14 +513,6 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   transform: rotate(0deg) translateY(-10px) scale(1.03) !important;
   box-shadow: 0 24px 64px rgba(0,0,0,0.16); z-index: 3;
 }
-.aph-placeholder {
-  width: 100%; height: 100%;
-  background: linear-gradient(160deg, var(--light-gray), #e0d8cc);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 0.5rem;
-}
-.aph-placeholder span { font-size: 2.5rem; }
-.aph-placeholder p { font-size: 0.75rem; color: var(--mid); font-weight: 500; text-align: center; padding: 0 0.5rem; }
 .aph-card img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .aph-label {
   position: absolute; bottom: 0; left: 0; right: 0;
@@ -533,11 +626,10 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   position: relative; overflow: hidden;
 }
 .pf-item:hover .pf-thumb { transform: scale(1.06); }
-.pf-glyph {
-  font-size: 3.5rem; color: rgba(255,255,255,0.14);
-  transition: var(--transition); position: relative; z-index: 1;
+.pf-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
 }
-.pf-item:hover .pf-glyph { color: rgba(255,255,255,0.28); transform: scale(1.15) rotate(8deg); }
 .pf-thumb-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; }
 
 .pf-overlay {
@@ -718,7 +810,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 .footer-phone:hover { color: var(--mustard); }
 
 /* ──────────────────────────────────────────────
-   MODAL PORTAFOLIO + GALERÍA
+   MODAL PORTAFOLIO
 ────────────────────────────────────────────── */
 .modal-overlay {
   position: fixed; inset: 0; z-index: 2000;
@@ -833,8 +925,9 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 @media (max-width: 1100px) {
   .hero-content { gap: 2rem; }
   .hero-ring-outer { width: 290px; height: 290px; }
-  .hero-stat-1 { left: -110px; }
-  .hero-stat-2 { right: -105px; }
+  .hero-stat-1 { left: -70px; top: -15px; }
+  .hero-stat-2 { right: -70px; bottom: -15px; }
+  .hero-glow { left: 62%; width: 75vmin; height: 75vmin; }
   .skills-columns { gap: 2rem; }
   .skill-item { grid-template-columns: 130px 1fr 36px; }
   .portfolio-grid { grid-auto-rows: 200px; }
@@ -857,6 +950,9 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   .timeline-item:nth-child(even) .timeline-dot { left: 9px; right: auto; }
   .about-bio-row { grid-template-columns: 1fr; gap: 2rem; }
   .about-quote { position: static; }
+  .hero-stat-1 { left: -40px; }
+  .hero-stat-2 { right: -40px; }
+  .hero-glow { left: 58%; width: 70vmin; height: 70vmin; }
 }
 
 /* ──────────────────────────────────────────────
@@ -865,34 +961,20 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 @media (max-width: 768px) {
   :root { --nav-h: 60px; }
 
-  /* ─── NAVBAR FIX MÓVIL ───────────────────────
-     Se eliminan transform y will-change del #navbar global.
-     En Android Chrome / iOS Safari, will-change: transform sobre
-     position: fixed crea una capa de composición separada que
-     puede "taparse" o desaparecer durante el scroll por inercia.
-     Sin estos hints el navegador mantiene el nav correctamente fijo.
-  ─────────────────────────────────────────────── */
   #navbar {
     transform: none !important;
     will-change: auto !important;
     background: var(--white);
     height: var(--nav-h);
-    /* Forzar nuevo contexto de apilamiento sin afectar fixed */
     isolation: isolate;
   }
-  #navbar.scrolled {
-    background: var(--dark);
-  }
+  #navbar.scrolled { background: var(--dark); }
 
-  .nav-container {
-    padding: 0 1.25rem;
-    height: 100%;
-  }
+  .nav-container { padding: 0 1.25rem; height: 100%; }
 
-  /* Menú desplegable — usa top fijo, NO hereda transform del padre */
   .nav-menu {
     position: fixed;
-    top: 60px;               /* valor hardcodeado = --nav-h en móvil */
+    top: 60px;
     left: 0; right: 0;
     background: var(--dark);
     flex-direction: column; align-items: flex-start;
@@ -932,14 +1014,6 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 
   .hamburger { display: flex; margin-left: auto; }
 
-  /* ─── HERO ───────────────────────────────────
-     En móvil el hero usa column-reverse, apilando
-     foto + stats + texto → la sección puede superar 150vh.
-     Con position: absolute; bottom: X el botón quedaba
-     fuera del primer viewport. La solución: anclarlo
-     desde arriba para que siempre caiga dentro del
-     primer 100vh visible.
-  ─────────────────────────────────────────────── */
   .hero { padding: calc(var(--nav-h) + 1.5rem) 1.25rem 5rem; }
   .hero-content { flex-direction: column-reverse; text-align: center; gap: 1.5rem; }
   .hero-text { max-width: 100%; }
@@ -949,22 +1023,30 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   .hero-ring-outer { width: min(80vw, 320px); height: min(80vw, 320px); }
 
   .hero-stat {
-    position: static !important; animation: none !important; transform: none !important;
-    display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1rem;
+    position: static !important;
+    animation: none !important;
+    transform: none !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1rem;
+    min-width: auto;
   }
   .hero-stats-row { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
 
-  /* ─── FLECHA SCROLL: siempre visible en primer viewport ───
-     Se ancla con top desde la parte superior del hero en lugar
-     de bottom, de modo que siempre cae dentro del primer 100vh
-     sin importar cuánto contenido apile el hero en móvil.
-  ─────────────────────────────────────────────── */
+  .hero-glow {
+    width: 70vmin;
+    height: 70vmin;
+    left: 50%;
+    top: 45%;
+    filter: blur(30px);
+  }
+
   .hero-scroll-btn {
     top: calc(100vh - 88px);
     bottom: auto;
   }
 
-  /* Sobre mí */
   .about-photos-row { gap: 0.75rem; }
   .aph-card-1 { width: 160px; height: 210px; }
   .aph-card-2 { width: 180px; height: 235px; }
@@ -994,11 +1076,8 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   .section { padding: 4rem 1.25rem; }
   .hero { padding: calc(var(--nav-h) + 1rem) 1.25rem 4rem; }
   .hero-ring-outer { width: 80vw; height: 80vw; }
-  /* Mantener el ancla desde arriba también en pantallas pequeñas */
-  .hero-scroll-btn {
-    top: calc(100vh - 75px);
-    bottom: auto;
-  }
+  .hero-scroll-btn { top: calc(100vh - 75px); bottom: auto; }
+  .hero-glow { width: 85vmin; height: 85vmin; filter: blur(25px); }
 
   .about-photos-row { gap: 0.5rem; }
   .aph-card-1, .aph-card-3 { width: 115px; height: 155px; }
@@ -1015,77 +1094,4 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 
   .footer-socials { gap: 0.35rem; }
   .fsoc { width: 30px; height: 30px; }
-}
-
-/* ──────────────────────────────────────────────
-   EFECTOS ESPECIALES PARA LA FOTO DEL HERO
-   Borde mostaza + neon + anillo pulsante
-────────────────────────────────────────────── */
-
-/* Borde mostaza con glow (efecto neon) */
-.hero-photo-ring {
-  border: 3px solid var(--mustard);
-  box-shadow: 0 0 9px rgba(201,149,42,0.5), 0 0 16px rgba(201,149,42,0.3);
-  transition: box-shadow 0.5s ease;
-  animation: neonPulse 2s infinite alternate;
-}
-
-/* Animación del neon (parpadeo suave) */
-@keyframes neonPulse {
-  0% {
-    box-shadow: 0 0 4px rgba(201,149,42,0.4), 0 0 8px rgba(201,149,42,0.2);
-    border-color: rgba(201,149,42,0.8);
-  }
-  100% {
-    box-shadow: 0 0 16px rgba(201,149,42,0.8), 0 0 32px rgba(201,149,42,0.5);
-    border-color: var(--mustard-light);
-  }
-}
-
-/* Anillo adicional que aparece y desaparece (pulsante) */
-.hero-ring-outer {
-  position: relative;
-}
-
-.hero-ring-outer::before {
-  content: '';
-  position: absolute;
-  top: -12px;
-  left: -12px;
-  right: -12px;
-  bottom: -12px;
-  border-radius: 50%;
-  border: 2px solid var(--mustard-light);
-  opacity: 0;
-  pointer-events: none;
-  animation: ringPulse 3s infinite ease-in-out;
-  z-index: 0;
-}
-
-@keyframes ringPulse {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.7;
-    border-width: 2px;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.2;
-    border-width: 1px;
-  }
-  100% {
-    transform: scale(0.95);
-    opacity: 0.7;
-    border-width: 2px;
-  }
-}
-
-/* Ajuste para móviles (evitar que el anillo se salga) */
-@media (max-width: 768px) {
-  .hero-ring-outer::before {
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
-  }
 }
