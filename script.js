@@ -1,8 +1,9 @@
 /* ══════════════════════════════════════════════
-   SCRIPT.JS — Roberto Azcorra Portfolio (CORREGIDO)
+   SCRIPT.JS — Roberto Azcorra Portfolio
+   Funciones del nav idénticas a servicios.js
    ══════════════════════════════════════════════ */
 
-/* ── PRELOADER ──────────────────────────────── */
+/* ── PRELOADER — 0.5 s ─────────────────────── */
 window.addEventListener('load', () => {
   setTimeout(() => {
     const pre = document.getElementById('preloader');
@@ -14,22 +15,25 @@ window.addEventListener('load', () => {
 });
 
 /* ══════════════════════════════════════════════
-   NAVBAR
+   NAVBAR — idéntico a servicios.js
    ══════════════════════════════════════════════ */
 const navbar    = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
 const navMenu   = document.getElementById('navMenu');
 
+/* Backdrop para cerrar menú al tocar fuera */
 const navBackdrop = document.createElement('div');
 navBackdrop.id = 'nav-backdrop';
 document.body.appendChild(navBackdrop);
 
+/* Scroll: cambiar estilos del navbar */
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
   highlightActiveLink();
   toggleBackToTop();
 }, { passive: true });
 
+/* Marcar link activo según sección visible */
 function highlightActiveLink() {
   const navH  = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h') || '68');
   const scrollY = window.scrollY + navH + 20;
@@ -43,30 +47,33 @@ function highlightActiveLink() {
   });
 }
 
+/* Hamburger */
 hamburger.addEventListener('click', e => {
   e.stopPropagation();
-  toggleMobileMenu();
+  toggleMenu();   /* mismo nombre que servicios.js */
 });
 
-function toggleMobileMenu() {
-  const isOpen = navMenu.classList.toggle('open');
-  hamburger.classList.toggle('open', isOpen);
-  navBackdrop.classList.toggle('active', isOpen);
-  document.body.style.overflow = isOpen ? 'hidden' : '';
+function toggleMenu() {
+  const open = navMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', open);
+  navBackdrop.classList.toggle('active', open);
+  document.body.style.overflow = open ? 'hidden' : '';
 }
 
-function closeMobileMenu() {
+function closeMenu() {
   navMenu.classList.remove('open');
   hamburger.classList.remove('open');
   navBackdrop.classList.remove('active');
   document.body.style.overflow = '';
 }
 
-navBackdrop.addEventListener('click', closeMobileMenu);
-navMenu.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', closeMobileMenu);
-});
+/* Cerrar al hacer clic en el backdrop */
+navBackdrop.addEventListener('click', closeMenu);
 
+/* Cerrar al hacer clic en cualquier enlace del menú */
+navMenu.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', closeMenu));
+
+/* ── SMOOTH SCROLL ─────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
@@ -131,7 +138,7 @@ function animateSkillBars() {
 }
 
 /* ══════════════════════════════════════════════
-   PORTAFOLIO — FILTRO
+   PORTAFOLIO — FILTRO CON TRANSICIÓN SUAVE
    ══════════════════════════════════════════════ */
 const filterBtns = document.querySelectorAll('.filter-btn');
 const pfItems    = Array.from(document.querySelectorAll('.pf-item'));
@@ -151,7 +158,6 @@ filterBtns.forEach(btn => {
     const toHide = pfItems.filter(item => filter !== 'all' && item.dataset.category !== filter);
 
     isFiltering = true;
-
     toHide.forEach(item => item.classList.add('pf-exiting'));
 
     setTimeout(() => {
@@ -160,29 +166,20 @@ filterBtns.forEach(btn => {
         item.classList.add('pf-hidden');
         item.style.pointerEvents = 'none';
       });
-
       toShow.forEach(item => {
         item.classList.remove('pf-hidden');
         item.style.pointerEvents = 'auto';
-        if (!item.classList.contains('pf-entering')) {
-          item.classList.add('pf-entering');
-        }
+        if (!item.classList.contains('pf-entering')) item.classList.add('pf-entering');
       });
-
       void document.getElementById('portfolioGrid').offsetHeight;
-
-      toShow.forEach((item, i) => {
-        setTimeout(() => item.classList.remove('pf-entering'), i * 55);
-      });
-
+      toShow.forEach((item, i) => setTimeout(() => item.classList.remove('pf-entering'), i * 55));
       setTimeout(() => { isFiltering = false; }, toShow.length * 55 + 400);
-
     }, 380);
   });
 });
 
 /* ══════════════════════════════════════════════
-   PORTAFOLIO — MODAL + GALERÍA (CORREGIDO)
+   PORTAFOLIO — MODAL + GALERÍA
    ══════════════════════════════════════════════ */
 const modal          = document.getElementById('portfolioModal');
 const modalClose     = document.getElementById('modalClose');
@@ -198,12 +195,12 @@ const galleryNext    = document.getElementById('galleryNext');
 let currentImages = [];
 let currentImgIdx = 0;
 
-// Función para detectar si una cadena es un gradiente CSS
+/* Detecta si el valor es un gradiente CSS o una ruta de imagen */
 function isGradient(str) {
   return str.includes('linear-gradient') || str.includes('radial-gradient') || str.includes('conic-gradient');
 }
 
-// Función para aplicar fondo correctamente (imagen o gradiente)
+/* Aplica fondo correctamente: imagen o gradiente */
 function setBackground(element, value) {
   if (isGradient(value)) {
     element.style.background = value;
@@ -254,6 +251,7 @@ galleryNext.addEventListener('click', () => {
   renderGallery();
 });
 
+/* Swipe táctil en galería */
 let touchStartX = 0;
 galleryMain.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
 galleryMain.addEventListener('touchend', e => {
@@ -266,6 +264,7 @@ galleryMain.addEventListener('touchend', e => {
   }
 });
 
+/* Teclado en galería */
 document.addEventListener('keydown', e => {
   if (!modal.classList.contains('open')) return;
   if (e.key === 'Escape')     closeModal();
@@ -273,6 +272,7 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') { currentImgIdx = (currentImgIdx + 1) % currentImages.length; renderGallery(); }
 });
 
+/* Abrir modal desde cada ítem del portafolio */
 pfItems.forEach(item => {
   const openBtn = item.querySelector('.pf-open');
   if (openBtn) openBtn.addEventListener('click', e => { e.stopPropagation(); openModal(item); });
@@ -332,7 +332,7 @@ function toggleBackToTop() { backToTopBtn?.classList.toggle('visible', window.sc
 backToTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 /* ══════════════════════════════════════════════
-   PORTAFOLIO — ENTRADA EN SCROLL
+   PORTAFOLIO — ANIMACIÓN DE ENTRADA EN SCROLL
    ══════════════════════════════════════════════ */
 const pfScrollObs = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
@@ -348,14 +348,14 @@ const pfScrollObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.08 });
 
 pfItems.forEach(item => {
-  item.style.opacity   = '0';
-  item.style.transform = 'translateY(28px) scale(0.97)';
+  item.style.opacity    = '0';
+  item.style.transform  = 'translateY(28px) scale(0.97)';
   item.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.35s ease';
   pfScrollObs.observe(item);
 });
 
 /* ══════════════════════════════════════════════
-   FOTOS SOBRE MÍ — TILT 3D
+   FOTOS SOBRE MÍ — TILT 3D AL HOVER
    ══════════════════════════════════════════════ */
 document.querySelectorAll('.aph-card').forEach(card => {
   card.addEventListener('mousemove', e => {
@@ -368,7 +368,7 @@ document.querySelectorAll('.aph-card').forEach(card => {
 });
 
 /* ══════════════════════════════════════════════
-   HERO — STATS EN MÓVIL
+   HERO — STATS EN MÓVIL: reordenar bajo el círculo
    ══════════════════════════════════════════════ */
 function setupHeroStats() {
   const heroImage = document.querySelector('.hero-image');

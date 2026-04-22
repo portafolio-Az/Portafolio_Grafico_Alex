@@ -38,7 +38,7 @@ ul { list-style: none; }
 input, select, textarea { -webkit-appearance: none; appearance: none; }
 
 /* ──────────────────────────────────────────────
-   PRELOADER
+   PRELOADER — FONDO BLANCO, 0.5 s
 ────────────────────────────────────────────── */
 #preloader {
   position: fixed; inset: 0; z-index: 9999;
@@ -78,7 +78,8 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 @keyframes preloader-fill { to { width: 100%; } }
 
 /* ──────────────────────────────────────────────
-   NAVBAR (común para index y servicios)
+   NAVBAR — Idéntico en index y servicios
+   Blanco sin scroll → oscuro con scroll
 ────────────────────────────────────────────── */
 #navbar {
   position: fixed;
@@ -87,8 +88,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   height: var(--nav-h);
   background: rgba(255,255,255,0.97);
   transition: background 0.35s ease, box-shadow 0.35s ease;
-  transform: translateZ(0);
-  will-change: transform;
+  /* Sin transform/will-change para evitar bugs de composición en móvil */
 }
 #navbar.scrolled {
   background: var(--dark);
@@ -122,6 +122,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   flex-shrink: 1;
 }
 
+/* Links — estado blanco (sin scroll) */
 .nav-link {
   position: relative;
   font-size: 0.82rem; font-weight: 500;
@@ -145,10 +146,12 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 .nav-link.active::after { width: 60%; }
 .nav-link.active      { color: var(--mustard); }
 
+/* Links — estado oscuro (con scroll) */
 #navbar.scrolled .nav-link         { color: rgba(255,255,255,0.82); }
 #navbar.scrolled .nav-link:hover   { color: var(--mustard-light); }
 #navbar.scrolled .nav-link.active  { color: var(--mustard); }
 
+/* Botón Descargar CV */
 .nav-cv {
   display: flex; align-items: center; gap: 0.35rem;
   background: rgba(201,149,42,0.1);
@@ -164,6 +167,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 #navbar.scrolled .nav-cv { color: var(--mustard-light) !important; background: rgba(201,149,42,0.12); }
 #navbar.scrolled .nav-cv:hover { background: var(--mustard); color: var(--dark) !important; }
 
+/* Behance (si aplica) */
 .nav-behance-outline {
   display: flex; align-items: center; gap: 0.35rem;
   background: transparent;
@@ -179,6 +183,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 #navbar.scrolled .nav-behance-outline { color: var(--mustard-light) !important; border-color: var(--mustard-light); }
 #navbar.scrolled .nav-behance-outline:hover { background: var(--mustard); color: var(--dark) !important; }
 
+/* Teléfono */
 .nav-phone {
   display: flex; align-items: center; gap: 0.4rem;
   font-size: 0.78rem; font-weight: 600;
@@ -190,6 +195,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 }
 .nav-phone:hover { background: var(--mustard-light); transform: translateY(-1px); }
 
+/* Socials en menú móvil */
 .nav-socials-mobile {
   display: none;
   align-items: center; justify-content: center; gap: 0.6rem;
@@ -206,6 +212,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 .nsm-icon svg { width: 16px; height: 16px; }
 .nsm-icon:hover { background: var(--mustard); color: var(--dark); }
 
+/* Hamburger */
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
   padding: 5px; flex-shrink: 0;
@@ -220,6 +227,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Backdrop para cerrar el menú móvil al tocar fuera */
 #nav-backdrop {
   display: none;
   position: fixed; inset: 0; z-index: 998;
@@ -228,7 +236,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 #nav-backdrop.active { display: block; }
 
 /* ──────────────────────────────────────────────
-   HERO
+   HERO — FONDO BLANCO, TEXTO OSCURO
 ────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
@@ -252,16 +260,16 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   background: radial-gradient(ellipse, rgba(201,149,42,0.05) 0%, transparent 70%);
 }
 
-/* Círculo de luz neon difuminado detrás de la foto */
+/* ── LUZ NEON MOSTAZA detrás de la foto ── */
 .hero-glow {
   position: absolute;
   width: 80vmin;
   height: 80vmin;
-  max-width: 550px;
-  max-height: 550px;
-  background: radial-gradient(circle, rgba(201,149,42,0.25) 0%, rgba(201,149,42,0) 70%);
+  max-width: 560px;
+  max-height: 560px;
+  background: radial-gradient(circle, rgba(201,149,42,0.28) 0%, rgba(201,149,42,0.12) 40%, rgba(201,149,42,0) 70%);
   border-radius: 50%;
-  filter: blur(40px);
+  filter: blur(45px);
   top: 50%;
   left: 65%;
   transform: translate(-50%, -50%);
@@ -275,25 +283,30 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   justify-content: space-between; gap: 3rem;
   position: relative; z-index: 1;
 }
-.hero-text { flex: 1; max-width: 580px; }
+.hero-text { flex: 1; max-width: 600px; }
+
 .hero-greeting {
-  font-size: 1rem; font-weight: 600;
+  /* 1. Saludo más grande */
+  font-size: 1.05rem; font-weight: 600;
   color: var(--mustard); letter-spacing: 0.2em;
   text-transform: uppercase; margin-bottom: 0.6rem;
 }
+/* 1. Nombre MUCHO más grande */
 .hero-name {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 5.5vw, 4.8rem);
+  font-size: clamp(3.6rem, 7vw, 6rem);
   font-weight: 700; color: var(--dark);
-  line-height: 1.08; margin-bottom: 0.6rem;
+  line-height: 1.05; margin-bottom: 0.65rem;
 }
 .hero-name-accent { color: var(--mustard); font-style: italic; }
+/* 1. Subtítulo ligeramente más grande */
 .hero-title {
-  font-size: 1rem; color: var(--mid);
+  font-size: 1.05rem; color: var(--mid);
   font-weight: 400; letter-spacing: 0.04em; margin-bottom: 1.5rem;
 }
+/* 1. Typewriter ligeramente más grande */
 .hero-typewriter {
-  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
   color: #444; min-height: 3rem; margin-bottom: 2.25rem; line-height: 1.65;
 }
 .cursor {
@@ -303,39 +316,38 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 @keyframes cursor-blink { 0%,100%{opacity:1} 50%{opacity:0} }
 .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-/* Botón negro (Trabajemos juntos) */
-.btn-dark {
-  background: var(--dark);
-  color: var(--white);
-  border: none;
-}
-.btn-dark:hover {
-  background: #2a2a2a;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-}
-
-/* Hero image */
+/* ── FOTO DEL HERO ── */
 .hero-image {
-  position: relative;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
 }
 .hero-ring-outer {
   position: relative;
-  width: 340px;
-  height: 340px;
+  width: 360px;
+  height: 360px;
+}
+/* Anillo pulsante exterior */
+.hero-ring-outer::before {
+  content: '';
+  position: absolute;
+  top: -12px; left: -12px; right: -12px; bottom: -12px;
+  border-radius: 50%;
+  border: 2px solid var(--mustard-light);
+  opacity: 0;
+  pointer-events: none;
+  animation: ringPulse 3s infinite ease-in-out;
+  z-index: 0;
+}
+@keyframes ringPulse {
+  0%   { transform: scale(0.95); opacity: 0.7; border-width: 2px; }
+  50%  { transform: scale(1.1);  opacity: 0.18; border-width: 1px; }
+  100% { transform: scale(0.95); opacity: 0.7; border-width: 2px; }
 }
 .hero-photo-ring {
   width: 100%; height: 100%; border-radius: 50%;
-  border: 3px solid var(--mustard);
-  padding: 8px;
-  animation: hero-float 5s ease-in-out infinite;
-  background: var(--off-white);
-  overflow: hidden;
-  box-shadow: 0 0 9px rgba(201,149,42,0.5), 0 0 16px rgba(201,149,42,0.3);
+  border: 3px solid var(--mustard); padding: 8px;
+  background: var(--off-white); overflow: hidden;
+  /* Neon pulse en el borde del anillo */
   animation: neonPulse 2s infinite alternate, hero-float 5s ease-in-out infinite;
 }
 @keyframes hero-float {
@@ -343,14 +355,10 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   50%     { transform: translateY(-14px); }
 }
 @keyframes neonPulse {
-  0% {
-    box-shadow: 0 0 4px rgba(201,149,42,0.4), 0 0 8px rgba(201,149,42,0.2);
-    border-color: rgba(201,149,42,0.8);
-  }
-  100% {
-    box-shadow: 0 0 16px rgba(201,149,42,0.8), 0 0 32px rgba(201,149,42,0.5);
-    border-color: var(--mustard-light);
-  }
+  0%   { box-shadow: 0 0 4px rgba(201,149,42,0.4), 0 0 8px rgba(201,149,42,0.2);
+         border-color: rgba(201,149,42,0.8); }
+  100% { box-shadow: 0 0 18px rgba(201,149,42,0.85), 0 0 38px rgba(201,149,42,0.5);
+         border-color: var(--mustard-light); }
 }
 .hero-photo-placeholder {
   width: 100%; height: 100%; border-radius: 50%;
@@ -366,70 +374,44 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   font-weight: 700; color: var(--mustard); opacity: 0.35;
 }
 
-/* Anillo pulsante */
-.hero-ring-outer {
-  position: relative;
-}
-.hero-ring-outer::before {
-  content: '';
-  position: absolute;
-  top: -12px;
-  left: -12px;
-  right: -12px;
-  bottom: -12px;
-  border-radius: 50%;
-  border: 2px solid var(--mustard-light);
-  opacity: 0;
-  pointer-events: none;
-  animation: ringPulse 3s infinite ease-in-out;
-  z-index: 0;
-}
-@keyframes ringPulse {
-  0% { transform: scale(0.95); opacity: 0.7; border-width: 2px; }
-  50% { transform: scale(1.1); opacity: 0.2; border-width: 1px; }
-  100% { transform: scale(0.95); opacity: 0.7; border-width: 2px; }
-}
-
-/* Stats flotantes (más grandes y más cerca) */
+/* 4. Cuadros flotantes MÁS GRANDES y MÁS CERCA del círculo */
 .hero-stat {
   position: absolute;
   background: var(--white);
   border-radius: var(--radius);
-  padding: 0.9rem 1.3rem;
-  box-shadow: var(--shadow-lg);
+  /* Mayor padding y tamaño mínimo */
+  padding: 1rem 1.5rem;
+  min-width: 120px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(201,149,42,0.15);
   text-align: center;
-  border: 1px solid rgba(201,149,42,0.25);
+  border: 1.5px solid rgba(201,149,42,0.3);
   z-index: 2;
-  backdrop-filter: blur(4px);
-  min-width: 110px;
+  backdrop-filter: blur(6px);
 }
+/* Más cerca: solapan ligeramente el círculo */
 .hero-stat-1 {
-  top: -20px;
-  left: -80px;
+  top: -25px;
+  left: -70px;
   animation: hero-float 5s ease-in-out infinite;
   animation-delay: -2s;
 }
 .hero-stat-2 {
-  bottom: -20px;
-  right: -80px;
+  bottom: -25px;
+  right: -70px;
   animation: hero-float 5s ease-in-out infinite;
   animation-delay: -1s;
 }
 .stat-number {
   display: block;
   font-family: var(--font-display);
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--mustard);
-  line-height: 1;
+  /* Número más grande */
+  font-size: 2.5rem;
+  font-weight: 700; color: var(--mustard); line-height: 1;
 }
 .stat-label {
   display: block;
-  font-size: 0.75rem;
-  color: var(--mid);
-  font-weight: 600;
-  white-space: nowrap;
-  margin-top: 4px;
+  font-size: 0.78rem; color: var(--mid);
+  font-weight: 600; white-space: nowrap; margin-top: 4px;
 }
 
 .hero-scroll-btn {
@@ -458,6 +440,16 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   padding: 0.72rem 1.7rem; border-radius: 99px;
   font-weight: 600; font-size: 0.88rem;
   letter-spacing: 0.02em; transition: var(--transition); white-space: nowrap;
+}
+/* 2. Botón "Trabajemos juntos" en negro */
+.btn-dark {
+  background: var(--dark);
+  color: var(--white);
+}
+.btn-dark:hover {
+  background: #2a2a2a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.22);
 }
 .btn-primary { background: var(--mustard); color: var(--dark); }
 .btn-primary:hover {
@@ -562,7 +554,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 }
 
 /* ──────────────────────────────────────────────
-   PORTAFOLIO
+   PORTAFOLIO — FONDO BLANCO
 ────────────────────────────────────────────── */
 #portafolio.section-dark {
   background: var(--white);
@@ -625,12 +617,19 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   transition: transform 0.55s ease;
   position: relative; overflow: hidden;
 }
-.pf-item:hover .pf-thumb { transform: scale(1.06); }
 .pf-thumb img {
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover;
+  object-fit: cover; object-position: center;
+  transition: transform 0.55s ease;
 }
-.pf-thumb-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; }
+.pf-item:hover .pf-thumb img { transform: scale(1.06); }
+.pf-glyph {
+  font-size: 3.5rem; color: rgba(255,255,255,0.14);
+  transition: var(--transition); position: relative; z-index: 1;
+}
+.pf-item:hover .pf-glyph { color: rgba(255,255,255,0.28); transform: scale(1.15) rotate(8deg); }
+.pf-thumb-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; z-index: 2; }
 
 .pf-overlay {
   position: absolute; inset: 0;
@@ -638,6 +637,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   display: flex; flex-direction: column;
   justify-content: flex-end; padding: 1.4rem 1.6rem;
   opacity: 0; transition: opacity 0.3s ease;
+  z-index: 3;
 }
 .pf-item:hover .pf-overlay { opacity: 1; }
 .pf-cat-tag {
@@ -698,7 +698,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 .timeline-content p:last-child { font-size: 0.86rem; color: #555; line-height: 1.65; margin: 0; }
 
 /* ──────────────────────────────────────────────
-   CONTACTO
+   CONTACTO — FONDO BLANCO
 ────────────────────────────────────────────── */
 #contacto.section-dark {
   background: var(--white);
@@ -810,7 +810,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 .footer-phone:hover { color: var(--mustard); }
 
 /* ──────────────────────────────────────────────
-   MODAL PORTAFOLIO
+   MODAL PORTAFOLIO + GALERÍA
 ────────────────────────────────────────────── */
 .modal-overlay {
   position: fixed; inset: 0; z-index: 2000;
@@ -924,9 +924,11 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 ────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .hero-content { gap: 2rem; }
-  .hero-ring-outer { width: 290px; height: 290px; }
-  .hero-stat-1 { left: -70px; top: -15px; }
-  .hero-stat-2 { right: -70px; bottom: -15px; }
+  .hero-ring-outer { width: 300px; height: 300px; }
+  /* 5. Stats más cerca en tablet */
+  .hero-stat-1 { left: -60px; top: -15px; }
+  .hero-stat-2 { right: -60px; bottom: -15px; }
+  /* 3. Glow adaptado */
   .hero-glow { left: 62%; width: 75vmin; height: 75vmin; }
   .skills-columns { gap: 2rem; }
   .skill-item { grid-template-columns: 130px 1fr 36px; }
@@ -950,17 +952,20 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   .timeline-item:nth-child(even) .timeline-dot { left: 9px; right: auto; }
   .about-bio-row { grid-template-columns: 1fr; gap: 2rem; }
   .about-quote { position: static; }
-  .hero-stat-1 { left: -40px; }
-  .hero-stat-2 { right: -40px; }
+  /* 5. Stats en tablet 900 */
+  .hero-stat-1 { left: -35px; }
+  .hero-stat-2 { right: -35px; }
   .hero-glow { left: 58%; width: 70vmin; height: 70vmin; }
 }
 
 /* ──────────────────────────────────────────────
-   RESPONSIVE — MOBILE 768px (CORREGIDO)
+   RESPONSIVE — MOBILE 768px
+   Nav idéntico al de servicios.html
 ────────────────────────────────────────────── */
 @media (max-width: 768px) {
   :root { --nav-h: 60px; }
 
+  /* ── NAV MÓVIL — igual que servicios ── */
   #navbar {
     transform: none !important;
     will-change: auto !important;
@@ -974,7 +979,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 
   .nav-menu {
     position: fixed;
-    top: 60px;
+    top: 60px;       /* valor hardcodeado = --nav-h en móvil */
     left: 0; right: 0;
     background: var(--dark);
     flex-direction: column; align-items: flex-start;
@@ -1011,17 +1016,22 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
   }
   .nav-socials-mobile { display: flex; width: 100%; }
   .nav-phone { display: none; }
-
   .hamburger { display: flex; margin-left: auto; }
 
+  /* ── HERO MÓVIL ── */
   .hero { padding: calc(var(--nav-h) + 1.5rem) 1.25rem 5rem; }
   .hero-content { flex-direction: column-reverse; text-align: center; gap: 1.5rem; }
   .hero-text { max-width: 100%; }
   .hero-cta { justify-content: center; }
 
+  /* 1. Nombre en móvil: más grande */
+  .hero-name { font-size: clamp(2.8rem, 9vw, 4.2rem); }
+
+  /* 5. Foto 80% del ancho */
   .hero-image { flex-direction: column; align-items: center; gap: 1rem; }
   .hero-ring-outer { width: min(80vw, 320px); height: min(80vw, 320px); }
 
+  /* 5. Stats en móvil: debajo del círculo (JS los reubica) */
   .hero-stat {
     position: static !important;
     animation: none !important;
@@ -1029,11 +1039,12 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.55rem 1rem;
+    padding: 0.65rem 1.2rem;
     min-width: auto;
   }
   .hero-stats-row { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
 
+  /* 3. Glow centrado en móvil */
   .hero-glow {
     width: 70vmin;
     height: 70vmin;
@@ -1042,6 +1053,7 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
     filter: blur(30px);
   }
 
+  /* Flecha scroll siempre visible en primer viewport */
   .hero-scroll-btn {
     top: calc(100vh - 88px);
     bottom: auto;
@@ -1075,8 +1087,13 @@ input, select, textarea { -webkit-appearance: none; appearance: none; }
 @media (max-width: 480px) {
   .section { padding: 4rem 1.25rem; }
   .hero { padding: calc(var(--nav-h) + 1rem) 1.25rem 4rem; }
+  /* 5. Foto exactamente 80vw en pantallas pequeñas */
   .hero-ring-outer { width: 80vw; height: 80vw; }
+  /* 1. Nombre adaptado */
+  .hero-name { font-size: clamp(2.5rem, 10vw, 3.8rem); }
+  /* Flecha scroll */
   .hero-scroll-btn { top: calc(100vh - 75px); bottom: auto; }
+  /* 3. Glow en móvil pequeño */
   .hero-glow { width: 85vmin; height: 85vmin; filter: blur(25px); }
 
   .about-photos-row { gap: 0.5rem; }
